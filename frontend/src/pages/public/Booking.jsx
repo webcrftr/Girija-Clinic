@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useUI } from '../../context/UIContext';
 import { db } from '../../firebase/firebase';
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from 'firebase/firestore';
-import { Calendar, Clock, HeartPulse, User } from 'lucide-react';
+import { Calendar, HeartPulse, CheckCircle2, ShieldCheck, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Booking() {
   const { showToast, settings } = useUI();
@@ -95,19 +96,40 @@ export default function Booking() {
 
   if (success) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center p-6 bg-white dark:bg-slate-900 transition-colors">
-        <div className="max-w-md w-full bg-slate-50 dark:bg-slate-850 border border-slate-100 dark:border-slate-800 rounded-3xl p-8 text-center space-y-6">
-          <div className="h-16 w-16 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg shadow-emerald-500/10">
-            ✓
+      <div className="min-h-[80vh] flex items-center justify-center p-6 bg-[#F5F8FD] transition-colors py-28">
+        <div className="max-w-lg w-full bg-white border border-[#E2E8F0] rounded-3xl p-10 text-center space-y-6 shadow-soft">
+          <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+            <CheckCircle2 size={36} />
           </div>
-          <h2 className="text-2xl font-bold font-display text-slate-900 dark:text-white">Booking Confirmed!</h2>
-          <p className="text-xs text-slate-500 leading-relaxed font-semibold">
-            Your appointment has been registered. Our reception desk will call you shortly on <strong>{formData.phone}</strong> to confirm clinical parameters or schedule changes.
-          </p>
-          <div className="pt-4 flex flex-col space-y-2">
+
+          <div className="space-y-2">
+            <h2 className="text-3xl font-extrabold font-display text-[#0F172A]">
+              Booking Confirmed!
+            </h2>
+            <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed font-normal">
+              Your appointment request has been submitted. Our reception desk will call you shortly at <strong className="text-[#0F172A] font-semibold">{formData.phone}</strong> to confirm your slot parameters.
+            </p>
+          </div>
+
+          <div className="p-4 bg-[#F5F8FD] rounded-2xl border border-[#DBEAFE] text-left space-y-1.5 text-xs">
+            <div className="flex justify-between text-[#64748B]">
+              <span>Patient:</span>
+              <strong className="text-[#0F172A]">{formData.firstName} {formData.lastName}</strong>
+            </div>
+            <div className="flex justify-between text-[#64748B]">
+              <span>Visit Date:</span>
+              <strong className="text-[#0F172A]">{formData.appointmentDate}</strong>
+            </div>
+            <div className="flex justify-between text-[#64748B]">
+              <span>Time Slot:</span>
+              <strong className="text-[#2563EB]">{formData.timeSlot}</strong>
+            </div>
+          </div>
+
+          <div className="pt-2">
             <Link
               to="/"
-              className="py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg text-xs font-bold transition text-center"
+              className="inline-block w-full py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-full text-xs font-bold transition shadow-sm text-center"
             >
               Return Home
             </Link>
@@ -118,130 +140,138 @@ export default function Booking() {
   }
 
   return (
-    <div className="font-sans antialiased text-slate-800 bg-white dark:bg-slate-900 transition-colors duration-200 py-16 text-left">
+    <div className="font-sans antialiased text-[#0F172A] bg-white transition-colors duration-200 py-28 text-left">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Title */}
-        <div className="text-center max-w-xl mx-auto mb-12 space-y-3">
-          <HeartPulse size={36} className="text-primary-500 mx-auto" />
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
+        <div className="text-center max-w-xl mx-auto mb-14 space-y-3">
+          <div className="w-12 h-12 bg-[#DBEAFE] text-[#2563EB] rounded-2xl flex items-center justify-center mx-auto shadow-subtle">
+            <HeartPulse size={24} />
+          </div>
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] font-display tracking-tight">
             Schedule Doctor Visit
           </h1>
-          <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-            Register your basic health vitals and pick a calendar schedule. We will coordinate details.
+          <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed font-normal">
+            Register your basic health details and pick a calendar schedule. We will coordinate details.
           </p>
         </div>
 
         {/* Booking Form Sheet */}
-        <div className="bg-slate-50 dark:bg-slate-850 p-8 sm:p-10 rounded-[32px] border border-slate-150 dark:border-slate-800 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] shadow-soft">
+          <form onSubmit={handleSubmit} className="space-y-8">
             
             {/* Step 1: Patient Profile Fields */}
-            <div className="space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800 uppercase tracking-wider text-primary-500">
-                <User size={16} />
-                <span>1. Patient Personal Details</span>
-              </h3>
+            <div className="space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-[#F1F5F9]">
+                <h3 className="text-xs font-bold text-[#0F172A] flex items-center space-x-2 uppercase tracking-wider">
+                  <User size={15} className="text-[#2563EB]" />
+                  <span>1. Patient Personal Details</span>
+                </h3>
+                <span className="text-[11px] text-[#2563EB] font-semibold flex items-center gap-1">
+                  <ShieldCheck size={14} /> Confidential
+                </span>
+              </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">FIRST NAME *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">FIRST NAME *</label>
                   <input
                     type="text"
                     name="firstName"
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                     placeholder="Enter first name"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">LAST NAME *</label>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">LAST NAME *</label>
                   <input
                     type="text"
                     name="lastName"
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                     placeholder="Enter last name"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">TELEPHONE NUMBER *</label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">TELEPHONE NUMBER *</label>
                   <input
                     type="tel"
                     name="phone"
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                     placeholder="Enter mobile phone number"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">EMAIL ADDRESS</label>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">EMAIL ADDRESS</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">DATE OF BIRTH *</label>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">DATE OF BIRTH *</label>
                   <input
                     type="date"
                     name="dob"
                     required
                     value={formData.dob}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">GENDER *</label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">GENDER *</label>
                   <select
                     name="gender"
                     required
                     value={formData.gender}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">AGE *</label>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">AGE *</label>
                   <input
                     type="number"
                     name="age"
                     required
                     value={formData.age}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                     placeholder="e.g. 35"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">BLOOD GROUP *</label>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">BLOOD GROUP *</label>
                   <select
                     name="bloodGroup"
                     required
                     value={formData.bloodGroup}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   >
                     {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(bg => (
                       <option key={bg} value={bg}>{bg}</option>
@@ -252,33 +282,36 @@ export default function Booking() {
             </div>
 
             {/* Step 2: Appointment Fields */}
-            <div className="space-y-4 pt-4">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800 uppercase tracking-wider text-primary-500">
-                <Calendar size={16} />
-                <span>2. Schedule Preferences</span>
-              </h3>
+            <div className="space-y-5 pt-4">
+              <div className="flex items-center justify-between pb-3 border-b border-[#F1F5F9]">
+                <h3 className="text-xs font-bold text-[#0F172A] flex items-center space-x-2 uppercase tracking-wider">
+                  <Calendar size={15} className="text-[#2563EB]" />
+                  <span>2. Schedule Preferences</span>
+                </h3>
+              </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">VISIT DATE *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">VISIT DATE *</label>
                   <input
                     type="date"
                     name="appointmentDate"
                     required
-                    min={new Date().toISOString().split('T')[0]} // Block past dates
+                    min={new Date().toISOString().split('T')[0]}
                     value={formData.appointmentDate}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block">TIME SLOT *</label>
+
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">TIME SLOT *</label>
                   <select
                     name="timeSlot"
                     required
                     value={formData.timeSlot}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   >
                     {slots.map(s => (
                       <option key={s} value={s}>{s}</option>
@@ -287,27 +320,53 @@ export default function Booking() {
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">REASON FOR VISIT</label>
+              {/* Slot Quick Selector */}
+              <div className="space-y-2 pt-1">
+                <label className="text-[10px] font-bold text-[#64748B] block tracking-wider uppercase">
+                  QUICK SLOT PICKER
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  {slots.map(s => {
+                    const selected = formData.timeSlot === s;
+                    return (
+                      <button
+                        type="button"
+                        key={s}
+                        onClick={() => setFormData(prev => ({ ...prev, timeSlot: s }))}
+                        className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
+                          selected
+                            ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-sm'
+                            : 'bg-[#F8FAFC] text-[#0F172A] border-[#E2E8F0] hover:border-[#2563EB]'
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="space-y-1.5 pt-2">
+                <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">REASON FOR VISIT</label>
                 <input
                   type="text"
                   name="reason"
                   value={formData.reason}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
+                  className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                   placeholder="e.g. Regular health assessment, checkups"
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">DOCTOR NOTES (OPTIONAL)</label>
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">DOCTOR NOTES (OPTIONAL)</label>
                 <textarea
                   name="notes"
                   rows={3}
                   value={formData.notes}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs focus:outline-none focus:border-primary-500 dark:text-white"
-                  placeholder="Provide allergy histories, pain levels, or diagnostic summaries if any..."
+                  className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
+                  placeholder="Provide allergy histories, symptoms, or diagnostic summaries..."
                 ></textarea>
               </div>
             </div>
@@ -315,9 +374,10 @@ export default function Booking() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-primary-500 hover:bg-primary-600 disabled:bg-slate-450 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-primary-500/20 active:scale-[0.99] flex items-center justify-center space-x-2"
+              className="w-full py-4 bg-[#2563EB] hover:bg-[#1D4ED8] disabled:opacity-50 text-white font-bold rounded-full text-xs sm:text-sm transition shadow-sm active:scale-95 flex items-center justify-center space-x-2"
             >
-              {loading ? 'Transmitting Schedule logs...' : 'Book Doctor Visit'}
+              <Calendar size={16} />
+              <span>{loading ? 'Transmitting Schedule logs...' : 'Book Doctor Visit'}</span>
             </button>
 
           </form>
