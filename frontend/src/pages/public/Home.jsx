@@ -43,7 +43,7 @@ export default function Home() {
   const whyChooseUsList = [
     { title: 'Personalized Treatment', desc: 'Customized herbal and para-surgical care tailored to your unique Nadi Pariksha and Prakriti profile.', icon: Sparkles },
     { title: 'Root Cause Healing', desc: 'We target underlying Vata, Pitta, and Kapha imbalances rather than masking superficial symptoms.', icon: Compass },
-    { title: 'Experienced Ayurvedic Doctors', desc: 'Led by Dr. Ombeer R. Pal (18+ Yrs) and Dr. Chandrakumar Deshmukh (25+ Yrs, PhD in Neurology).', icon: Award },
+    { title: 'Experienced Medical Doctors', desc: 'Led by Dr. Ombeer R. Pal (18+ Yrs, MD Ayurveda) and Dr. Jyoti O. Pal (15+ Yrs, BHMS MUHS).', icon: Award },
     { title: 'Natural Medicines', desc: '100% pure, unadulterated herbal formulations and classical Rasayana preparations.', icon: Feather },
     { title: 'Modern Diagnostics', desc: 'Integrating traditional pulse diagnosis with modern blood tests, MRI, and digital health records.', icon: Activity },
     { title: 'Traditional Ayurveda', desc: 'Authentic classical procedures faithfully preserved from Sushruta and Charaka Samhita.', icon: ShieldCheck },
@@ -79,12 +79,12 @@ export default function Home() {
       condition: 'Knee Joint Healing'
     },
     { 
-      name: 'Vikramaditya Rao', 
-      role: 'Post-Stroke Paralysis Patient', 
-      text: 'Under Dr. Chandrakumar Deshmukh’s neuro-Panchakarma protocol, my father regained speech and leg movement within 3 weeks. Truly miraculous!',
-      initials: 'VR',
+      name: 'Priyanka Sharma', 
+      role: 'Chronic Migraine & Hormonal Wellness Patient', 
+      text: 'Under Dr. Jyoti O. Pal’s holistic homeopathic consultation and care, my chronic migraines and hormonal imbalances improved remarkably. Truly life-changing care!',
+      initials: 'PS',
       rating: 5,
-      condition: 'Paralysis Recovery'
+      condition: 'Hormonal Wellness'
     }
   ];
 
@@ -99,7 +99,7 @@ export default function Home() {
     },
     { 
       q: 'Who will lead my consultation?', 
-      a: 'Your consultation will be conducted directly by Lead Senior Physician Dr. Ombeer R. Pal or Chief Medical Officer Dr. Chandrakumar Deshmukh (Specialist in Neurological Disorders).' 
+      a: 'Your consultation will be conducted directly by Senior Panchakarma Specialist Dr. Ombeer R. Pal or Senior Homeopathic Physician Dr. Jyoti O. Pal.' 
     },
     { 
       q: 'Is Panchakarma suitable for everyone?', 
@@ -115,7 +115,7 @@ export default function Home() {
     <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300">
       <SEOHead 
         title="Dr. Ombeer R. Pal | Premium Ayurvedic Clinic, Agnikarma & Panchakarma Centre"
-        description="Girija Clinic under Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh offers authentic Agnikarma, Viddhakarma, and Panchakarma for chronic pain, sciatica, slip disc, and neurological disorders."
+        description="Girija Clinic under Dr. Ombeer R. Pal & Dr. Jyoti O. Pal offers authentic Ayurveda, Homeopathy, Agnikarma, Viddhakarma, and Panchakarma for chronic pain, women's health, and holistic family care."
       />
 
       {/* 1. HERO SECTION */}
@@ -151,7 +151,7 @@ export default function Home() {
               {/* Doctor Attribution */}
               <div className="flex items-center space-x-3 text-sm text-emerald-200 font-semibold pt-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#C59B27] animate-pulse" />
-                <span>Lead Physician: <strong>Dr. Ombeer R. Pal</strong> (BAMS, MD Ayurveda)</span>
+                <span>Lead Physician: <strong>Dr. Ombeer R. Pal</strong> (MD Ayurveda)</span>
               </div>
 
               {/* Body Text */}
@@ -226,20 +226,20 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white font-display">Dr. Ombeer R. Pal</h3>
-                    <p className="text-xs text-[#C59B27] font-bold uppercase tracking-wider">Lead Senior Physician</p>
-                    <p className="text-[11px] text-emerald-200/80 mt-0.5">BAMS, MD (Ayurveda) • 18+ Yrs Experience</p>
+                    <p className="text-xs text-[#C59B27] font-bold uppercase tracking-wider">Senior Panchakarma & Musculoskeletal Specialist</p>
+                    <p className="text-[11px] text-emerald-200/80 mt-0.5">MD (Ayurveda) • 18+ Yrs Experience</p>
                   </div>
                 </div>
 
-                {/* Founder Doctor Showcase */}
+                {/* Doctor 2 Showcase */}
                 <div className="p-4 rounded-2xl bg-black/20 border border-emerald-800 flex items-center space-x-4">
                   <div className="w-16 h-16 rounded-2xl bg-[#C59B27]/20 border border-[#C59B27]/40 flex items-center justify-center text-3xl shrink-0 shadow-md">
-                    🧠
+                    🌸
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-display">Dr. Chandrakumar Deshmukh</h3>
-                    <p className="text-xs text-[#C59B27] font-bold uppercase tracking-wider">Chief Medical Officer & Founder</p>
-                    <p className="text-[11px] text-emerald-200/80 mt-0.5">BAMS, MD, PhD in Neurology • 25+ Yrs</p>
+                    <h3 className="text-lg font-bold text-white font-display">Dr. Jyoti O. Pal</h3>
+                    <p className="text-xs text-[#C59B27] font-bold uppercase tracking-wider">Senior Homeopathic Physician</p>
+                    <p className="text-[11px] text-emerald-200/80 mt-0.5">BHMS (MUHS) • 15+ Yrs Clinical Experience</p>
                   </div>
                 </div>
 
@@ -689,7 +689,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <CTABanner
           title="Ready to live pain-free with authentic Ayurveda?"
-          subtitle="Book a consultation with Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh at Girija Clinic today."
+          subtitle="Book a consultation with Dr. Ombeer R. Pal & Dr. Jyoti O. Pal at Girija Clinic today."
           variant="gold"
         />
       </section>

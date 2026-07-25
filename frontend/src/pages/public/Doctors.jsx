@@ -14,8 +14,8 @@ export default function Doctors() {
   return (
     <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300 py-28 text-left selection:bg-[#C59B27] selection:text-white">
       <SEOHead 
-        title="Senior Ayurvedic Physicians | Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh"
-        description="Meet Dr. Ombeer R. Pal (Lead Physician, Panchakarma & Agnikarma Specialist) and Dr. Chandrakumar Deshmukh (CMO & Founder, PhD in Neurology) at Girija Clinic."
+        title="Senior Medical Specialists | Dr. Ombeer R. Pal & Dr. Jyoti O. Pal"
+        description="Meet Dr. Ombeer R. Pal (Senior Panchakarma & Musculoskeletal Specialist) and Dr. Jyoti O. Pal (Senior Homeopathic Physician & Women's Health Specialist) at Girija Clinic."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,8 +172,8 @@ export default function Doctors() {
 
         {/* CTA Banner */}
         <CTABanner
-          title="Consult Directly with Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh"
-          subtitle="Experience precision Nadi Pariksha, Agnikarma, Viddhakarma, and Panchakarma therapies."
+          title="Consult Directly with Dr. Ombeer R. Pal & Dr. Jyoti O. Pal"
+          subtitle="Experience precision Nadi Pariksha, Agnikarma, Viddhakarma, Panchakarma, and Holistic Homeopathic consultations."
           variant="gold"
         />
 

@@ -27,7 +27,7 @@ export default function DoctorDetail() {
       <SEOHead 
         title={`${doctor.name} - ${doctor.title} | Girija Clinic`}
         description={doctor.summary}
-        keywords={`${doctor.name}, ${doctor.title}, Dr Ombeer R Pal, Dr Chandrakumar Deshmukh, Girija Clinic`}
+        keywords={`${doctor.name}, ${doctor.title}, Dr Ombeer R Pal, Dr Jyoti O Pal, Girija Clinic`}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

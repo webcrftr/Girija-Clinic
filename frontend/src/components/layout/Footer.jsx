@@ -31,7 +31,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-xs sm:text-sm text-emerald-100/75 leading-relaxed max-w-md font-normal">
-              Om Ayurveda is a premier Ayurvedic practice led by <strong className="text-white">Dr. Ombeer R. Pal</strong> and <strong className="text-white">Dr. Chandrakumar Deshmukh</strong>, delivering authentic root-cause healing, Agnikarma, Viddhakarma, and Panchakarma across two branches in Mira Road (East).
+              Om Ayurveda is a premier healthcare practice led by <strong className="text-white">Dr. Ombeer R. Pal</strong> and <strong className="text-white">Dr. Jyoti O. Pal</strong>, delivering authentic root-cause healing, Panchakarma, Agnikarma, Viddhakarma, and holistic Homeopathy across two branches in Mira Road (East).
             </p>
 
             <div className="flex flex-wrap gap-2 pt-1">
@@ -114,7 +114,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-emerald-200/60">
-          <p>&copy; {year} Om Ayurveda & Girija Clinic. Led by Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh. All rights reserved.</p>
+          <p>&copy; {year} Om Ayurveda & Girija Clinic. Led by Dr. Ombeer R. Pal & Dr. Jyoti O. Pal. All rights reserved.</p>
           <div className="mt-4 sm:mt-0 flex items-center space-x-6">
             <Link
               to="/admin/login"

@@ -29,13 +29,13 @@ export default function Testimonials() {
       therapy: 'Janu Basti & Agnikarma'
     },
     {
-      name: 'Vikramaditya Rao',
-      role: 'Post-Stroke Paralysis Patient',
-      text: 'Under Dr. Chandrakumar Deshmukh’s Ayurvedic neuro-rehabilitation protocol, my father’s paralyzed right hand and leg regained significant motor function within 21 days of Panchakarma therapy.',
+      name: 'Priyanka Sharma',
+      role: 'Chronic Migraine & Hormonal Wellness Patient',
+      text: 'Under Dr. Jyoti O. Pal’s holistic homeopathic consultation and care, my chronic migraines and hormonal imbalances improved remarkably. Truly life-changing care!',
       rating: 5,
       date: '3 weeks ago',
-      initials: 'VR',
-      therapy: 'Neuro-Panchakarma'
+      initials: 'PS',
+      therapy: 'Homeopathic Wellness'
     },
     {
       name: 'Meera Deshmukh',
@@ -70,7 +70,7 @@ export default function Testimonials() {
     <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300 py-28 text-left selection:bg-[#C59B27] selection:text-white">
       <SEOHead 
         title="Patient Recovery Testimonials | Dr. Ombeer R. Pal - Girija Clinic"
-        description="Read real patient success stories for Agnikarma, Viddhakarma, and Panchakarma at Girija Clinic under Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh."
+        description="Read real patient success stories for Agnikarma, Viddhakarma, Panchakarma, and Homeopathy at Girija Clinic under Dr. Ombeer R. Pal & Dr. Jyoti O. Pal."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

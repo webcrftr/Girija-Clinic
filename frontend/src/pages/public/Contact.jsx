@@ -130,8 +130,8 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#FDFBF7] border border-[#EAE4D9] rounded-xl text-xs text-[#14291D] focus:outline-none focus:border-[#C59B27] focus:bg-white transition-colors cursor-pointer"
                   >
-                    <option value="Dr. Ombeer R. Pal">Dr. Ombeer R. Pal (Lead Physician)</option>
-                    <option value="Dr. Chandrakumar Deshmukh">Dr. Chandrakumar Deshmukh (CMO & Founder)</option>
+                    <option value="Dr. Ombeer R. Pal">Dr. Ombeer R. Pal (Senior Panchakarma Specialist)</option>
+                    <option value="Dr. Jyoti O. Pal">Dr. Jyoti O. Pal (Senior Homeopathic Physician)</option>
                   </select>
                 </div>
               </div>

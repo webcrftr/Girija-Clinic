@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function CTABanner({
   title = "Ready to experience root-cause Ayurvedic healing?",
-  subtitle = "Consult with Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh today for personalized, non-surgical treatment plans.",
+  subtitle = "Consult with Dr. Ombeer R. Pal & Dr. Jyoti O. Pal today for personalized, non-surgical treatment plans.",
   primaryBtnText = "Book Doctor Consultation",
   secondaryBtnText = "WhatsApp Direct Consult",
   variant = "default" // 'default' | 'gold' | 'compact'

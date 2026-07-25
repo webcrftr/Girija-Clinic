@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 
 export default function SEOHead({
   title = "Dr. Ombeer R. Pal | Premium Ayurvedic Clinic & Panchakarma Centre",
-  description = "Experience authentic Ayurveda, Agnikarma, Viddhakarma & Panchakarma at Girija Clinic under Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh. Root cause healing for joint pain, spine & neurological disorders.",
-  keywords = "Ayurvedic clinic, Dr Ombeer R Pal, Agnikarma, Viddhakarma, Panchakarma, sciatica treatment, slip disc ayurveda, Dr Chandrakumar Deshmukh, joint pain relief, holistic health",
+  description = "Experience authentic Ayurveda, Homeopathy, Agnikarma, Viddhakarma & Panchakarma at Girija Clinic under Dr. Ombeer R. Pal & Dr. Jyoti O. Pal. Root cause healing for joint pain, spine, women's health & holistic family wellness.",
+  keywords = "Ayurvedic clinic, Homeopathy, Dr Ombeer R Pal, Dr Jyoti O Pal, Agnikarma, Viddhakarma, Panchakarma, sciatica treatment, women's health, joint pain relief, holistic health",
   canonicalUrl,
   schema
 }) {
@@ -61,7 +61,7 @@ export default function SEOHead({
         "@context": "https://schema.org",
         "@type": "Physician",
         "name": "Dr. Ombeer R. Pal",
-        "jobTitle": "Lead Senior Ayurvedic Physician & Panchakarma Specialist",
+        "jobTitle": "Senior Panchakarma & Musculoskeletal Specialist",
         "medicalSpecialty": "Ayurveda",
         "worksFor": {
           "@type": "MedicalOrganization",
@@ -72,14 +72,14 @@ export default function SEOHead({
       {
         "@context": "https://schema.org",
         "@type": "Physician",
-        "name": "Dr. Chandrakumar Deshmukh",
-        "jobTitle": "Chief Medical Officer & Founder",
-        "medicalSpecialty": "Neurology & Ayurveda",
+        "name": "Dr. Jyoti O. Pal",
+        "jobTitle": "Senior Homeopathic Physician",
+        "medicalSpecialty": "Homeopathy & Women's Health",
         "worksFor": {
           "@type": "MedicalOrganization",
           "name": "Girija Ayurvedic Clinic"
         },
-        "description": "Neurological disorders specialist with MD (Ayurveda) and PhD in Neurology."
+        "description": "Specialist in Homeopathic Therapeutics, Women's Health, Hormonal Disorders, and Pediatric Care with BHMS (MUHS)."
       }
     ];
 

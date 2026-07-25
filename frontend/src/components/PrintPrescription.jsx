@@ -55,7 +55,7 @@ export default function PrintPrescription({ prescription, onClose }) {
             </div>
             <div className="text-right">
               <h2 className="text-lg font-bold text-slate-900">Dr. Ombeer R. Pal</h2>
-              <p className="text-xs text-slate-500">BAMS, MD (Ayurveda) • Panchakarma Specialist</p>
+              <p className="text-xs text-slate-500">MD (Ayurveda) • Senior Panchakarma & Musculoskeletal Specialist</p>
               <p className="text-xs text-slate-500 mt-1">Reg No: GCN-AYU-092834</p>
             </div>
           </div>

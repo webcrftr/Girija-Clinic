@@ -59,7 +59,7 @@ export default function Services() {
             Ayurvedic <span className="text-gradient-gold">Treatments & Care</span>
           </h1>
           <p className="text-base sm:text-lg text-[#5C6B61] leading-relaxed font-normal">
-            Root cause, non-surgical Ayurvedic therapies administered under the expert guidance of <strong className="text-[#14291D]">Dr. Ombeer R. Pal</strong> and <strong className="text-[#14291D]">Dr. Chandrakumar Deshmukh</strong>.
+            Root cause, non-surgical medical therapies administered under the expert guidance of <strong className="text-[#14291D]">Dr. Ombeer R. Pal</strong> and <strong className="text-[#14291D]">Dr. Jyoti O. Pal</strong>.
           </p>
         </motion.div>
 

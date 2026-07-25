@@ -20,7 +20,7 @@ export default function About() {
     <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300 py-28 text-left">
       <SEOHead 
         title="About Girija Clinic | Authentic Ayurveda & Dr. Ombeer R. Pal"
-        description="Learn about Girija Ayurvedic Clinic, led by Senior Physician Dr. Ombeer R. Pal and CMO Dr. Chandrakumar Deshmukh. Our mission is root-cause healing through Agnikarma, Viddhakarma, and Panchakarma."
+        description="Learn about Girija Clinic, led by Dr. Ombeer R. Pal (MD Ayurveda) and Dr. Jyoti O. Pal (Senior Homeopathic Physician). Our mission is root-cause healing and holistic care."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +54,7 @@ export default function About() {
               At <strong className="text-[#14291D] font-semibold">{settings?.clinicName || 'Girija Clinic'}</strong>, we believe true healing occurs when disease is eradicated at its cellular root cause. Rather than offering short-term symptomatic relief, our treatments focus on restoring harmony to Vata, Pitta, and Kapha doshas.
             </p>
             <p className="text-[#5C6B61] text-sm sm:text-base leading-relaxed font-normal">
-              Under the leadership of Senior Physician <strong className="text-[#14291D] font-semibold">Dr. Ombeer R. Pal</strong> and Founder/CMO <strong className="text-[#14291D] font-semibold">Dr. Chandrakumar Deshmukh</strong>, our clinic has successfully restored health to over 15,000 patients suffering from chronic joint pain, sciatica, slip disc, migraines, paralysis, and metabolic disorders.
+              Under the leadership of Senior Physician <strong className="text-[#14291D] font-semibold">Dr. Ombeer R. Pal</strong> and Senior Homeopathic Physician <strong className="text-[#14291D] font-semibold">Dr. Jyoti O. Pal</strong>, our clinic has successfully restored health to over 15,000 patients suffering from chronic joint pain, sciatica, slip disc, migraines, women's health conditions, and metabolic disorders.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
@@ -90,7 +90,7 @@ export default function About() {
                 Ayurvedic Healthcare & Research
               </p>
               <p className="text-xs text-emerald-200/80 mt-4 leading-relaxed max-w-xs font-normal">
-                Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh
+                Dr. Ombeer R. Pal & Dr. Jyoti O. Pal
               </p>
             </div>
           </div>
