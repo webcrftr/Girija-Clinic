@@ -419,7 +419,7 @@ export default function AppointmentModal({
                               name="patientPhone"
                               value={formData.patientPhone}
                               onChange={handleInputChange}
-                              placeholder="+1 (555) 000-0000"
+                              placeholder="+91 99695 05111"
                               className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 text-sm bg-slate-50/50"
                               id="input-patientPhone"
                             />

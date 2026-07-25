@@ -40,9 +40,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-5">
-            <a href="tel:+919876543210" className="flex items-center space-x-1.5 hover:text-white transition">
+            <a href="tel:+919969505111" className="flex items-center space-x-1.5 hover:text-white transition">
               <PhoneCall size={12} className="text-[#C59B27]" />
-              <span>+91 98765 43210 / +91 98765 43211</span>
+              <span>+91 99695 05111</span>
             </a>
             <span className="text-emerald-800">|</span>
             <span className="text-emerald-300 font-semibold">Dr. Ombeer R. Pal</span>

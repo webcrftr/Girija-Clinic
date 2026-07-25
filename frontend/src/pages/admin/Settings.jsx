@@ -147,7 +147,7 @@ export default function Settings() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
-                  placeholder="e.g. +91 9876543210"
+                  placeholder="e.g. +91 9969505111"
                 />
               </div>
 

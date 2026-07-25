@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FloatingContactWidget from '../common/FloatingContactWidget';
 
 export default function PublicLayout() {
   return (
@@ -11,6 +12,8 @@ export default function PublicLayout() {
         <Outlet />
       </main>
       <Footer />
+      <FloatingContactWidget />
     </div>
   );
 }
+
