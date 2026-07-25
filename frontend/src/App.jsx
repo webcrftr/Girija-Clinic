@@ -16,7 +16,9 @@ import AdminLayout from './components/layout/AdminLayout';
 import Home from './pages/public/Home';
 import About from './pages/public/About';
 import Services from './pages/public/Services';
+import TreatmentDetail from './pages/public/TreatmentDetail';
 import Doctors from './pages/public/Doctors';
+import DoctorDetail from './pages/public/DoctorDetail';
 import Testimonials from './pages/public/Testimonials';
 import Contact from './pages/public/Contact';
 import Booking from './pages/public/Booking';
@@ -53,7 +55,10 @@ export default function App() {
               <Route index element={<Home />} />
               <Route path="about" element={<About />} />
               <Route path="services" element={<Services />} />
+              <Route path="treatments" element={<Services />} />
+              <Route path="treatments/:slug" element={<TreatmentDetail />} />
               <Route path="doctors" element={<Doctors />} />
+              <Route path="doctors/:id" element={<DoctorDetail />} />
               <Route path="testimonials" element={<Testimonials />} />
               <Route path="contact" element={<Contact />} />
               <Route path="book" element={<Booking />} />

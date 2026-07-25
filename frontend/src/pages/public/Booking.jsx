@@ -20,9 +20,11 @@ export default function Booking() {
     age: '',
     dob: '',
     bloodGroup: 'O+',
+    branchName: 'Om Ayurveda (Main Branch - Shanti Garden)',
+    doctorName: 'Dr. Ombeer R. Pal',
     appointmentDate: '',
     timeSlot: '09:00 AM - 09:30 AM',
-    reason: 'Routine Checkup',
+    reason: 'Agnikarma Pain Relief',
     notes: ''
   });
 
@@ -75,7 +77,7 @@ export default function Booking() {
       // Create appointment
       await addDoc(collection(db, 'appointments'), {
         patientId,
-        doctorName: 'Dr. Girija Prasad',
+        doctorName: formData.doctorName || 'Dr. Ombeer R. Pal',
         appointmentDate: formData.appointmentDate,
         timeSlot: formData.timeSlot,
         reason: formData.reason,

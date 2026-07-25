@@ -1,35 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useUI } from '../../context/UIContext';
-import { Award, CheckCircle2, Calendar, Sparkles, Stethoscope, Clock, ShieldCheck, Heart, UserCheck, ArrowRight } from 'lucide-react';
+import { Award, CheckCircle2, Calendar, Sparkles, Clock, ShieldCheck, Heart, UserCheck, ArrowRight, BookOpen, GraduationCap, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { doctorsData } from '../../data/doctorsData';
+import SEOHead from '../../components/common/SEOHead';
+import CTABanner from '../../components/common/CTABanner';
 
 export default function Doctors() {
   const { settings } = useUI();
-
-  const doctorData = {
-    name: settings?.doctorName || 'Dr. Girija Prasad',
-    role: 'Head Medical Director & Senior Physician',
-    degrees: 'MBBS, MD (Internal Medicine)',
-    experience: '15+ Years Clinical Experience',
-    bio: 'Dr. Girija Prasad is a distinguished medical practitioner specializing in internal medicine, holistic diagnostics, and chronic care management. With over 15 years of clinical practice, Dr. Girija is dedicated to evidence-based healthcare tailored to each patient’s unique physiological profile.',
-    specialties: [
-      'Internal Medicine & Acute Care',
-      'Cardiology Diagnostics & ECG',
-      'Diabetes & Hypertension Management',
-      'Preventive Metabolic Programs',
-      'Geriatric Health Protocols',
-      'Holistic Wellness Counseling'
-    ],
-    qualifications: [
-      { title: 'MBBS', institution: 'Premier University of Medical Sciences' },
-      { title: 'MD (Internal Medicine)', institution: 'National Institute of Medical Research' },
-      { title: 'Fellowship in Clinical Diagnostics', institution: 'International Board of Internal Medicine' }
-    ]
-  };
+  const [selectedDoctor, setSelectedDoctor] = useState(doctorsData[0]);
 
   return (
-    <div className="font-sans antialiased text-[#0F172A] bg-[#F8FAFC] dark:bg-slate-950 transition-colors duration-300 py-24 text-left selection:bg-blue-600 selection:text-white">
+    <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300 py-28 text-left selection:bg-[#C59B27] selection:text-white">
+      <SEOHead 
+        title="Senior Ayurvedic Physicians | Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh"
+        description="Meet Dr. Ombeer R. Pal (Lead Physician, Panchakarma & Agnikarma Specialist) and Dr. Chandrakumar Deshmukh (CMO & Founder, PhD in Neurology) at Girija Clinic."
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Page Header */}
@@ -39,119 +27,155 @@ export default function Doctors() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-16 space-y-4"
         >
-          <span className="inline-flex items-center space-x-2 text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-4 py-1.5 rounded-full uppercase tracking-wider border border-blue-200/50 dark:border-blue-800/40">
+          <span className="inline-flex items-center space-x-2 text-xs font-bold text-[#C59B27] bg-[#FDF7E7] px-4 py-1.5 rounded-full uppercase tracking-wider border border-[#C59B27]/40">
             <Sparkles size={13} />
-            <span>Medical Leadership</span>
+            <span>Ayurvedic Medical Leadership</span>
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white font-display tracking-tight leading-tight">
-            Specialist <span className="text-gradient-primary">Medical Director</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#14291D] font-display tracking-tight leading-tight">
+            Our Senior <span className="text-gradient-gold">Medical Specialists</span>
           </h1>
-          <p className="text-base sm:text-lg text-[#64748B] dark:text-slate-400 leading-relaxed font-normal">
-            Meet our lead physician providing personalized consultations, advanced diagnostics, and long-term care programs at Girija Clinic.
+          <p className="text-base sm:text-lg text-[#5C6B61] leading-relaxed font-normal">
+            Meet our veteran Ayurvedic physicians combining ancient Vedic pulse diagnosis (Nadi Pariksha) with modern clinical science to deliver lasting, non-surgical relief.
           </p>
         </motion.div>
 
-        {/* Main Doctor Showcase Card */}
-        <motion.div 
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-white dark:bg-slate-900 rounded-4xl border border-slate-200/80 dark:border-slate-800 shadow-luxury p-8 sm:p-12 mb-20 relative overflow-hidden"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Doctor Portrait visual */}
-            <div className="lg:col-span-5 relative">
-              <div className="aspect-[4/5] rounded-3xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-700 text-white flex flex-col items-center justify-center p-8 text-center shadow-xl relative overflow-hidden group">
-                <div className="w-32 h-32 rounded-3xl bg-white/10 backdrop-blur-md flex items-center justify-center text-7xl mb-6 shadow-2xl border border-white/20 group-hover:scale-105 transition-transform duration-300">
-                  👨‍⚕️
+        {/* DOCTORS SHOWCASE CARDS */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+          {doctorsData.map((doc, idx) => (
+            <motion.div
+              key={doc.id}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="bg-white rounded-3xl border-2 border-[#EAE4D9] hover:border-[#C59B27] shadow-card hover:shadow-soft-hover p-8 sm:p-10 flex flex-col justify-between transition-all text-left"
+            >
+              <div className="space-y-6">
+                
+                {/* Doctor Avatar Header */}
+                <div className="flex items-start space-x-5">
+                  <div className="w-20 h-20 rounded-2xl bg-[#1B3B2B] text-[#C59B27] border border-[#C59B27]/40 flex items-center justify-center text-4xl shrink-0 shadow-lg">
+                    {doc.avatarIcon}
+                  </div>
+                  <div>
+                    <span className="text-xs font-extrabold text-[#C59B27] uppercase tracking-wider">
+                      {doc.title}
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14291D] font-display mt-0.5">
+                      {doc.name}
+                    </h2>
+                    <p className="text-xs text-[#5C6B61] font-semibold mt-1">
+                      {doc.degrees}
+                    </p>
+                    <p className="text-xs font-extrabold text-[#1B3B2B] mt-0.5">
+                      {doc.experience}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold font-display">{doctorData.name}</h3>
-                <p className="text-xs text-blue-100 font-bold uppercase tracking-wider mt-1">{doctorData.degrees}</p>
-                <div className="mt-6 inline-flex items-center space-x-2 bg-emerald-500/20 backdrop-blur-md border border-emerald-400/40 px-4 py-2 rounded-full text-xs font-semibold text-emerald-200">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Available for Consultations</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Doctor Details */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <div>
-                <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
-                  Head Medical Director
-                </span>
-                <h2 className="text-3xl font-extrabold text-[#0F172A] dark:text-white font-display mt-1">
-                  {doctorData.name}
-                </h2>
-                <p className="text-xs text-[#64748B] dark:text-slate-400 font-semibold mt-1">
-                  {doctorData.experience} • {doctorData.degrees}
+                {/* Biography Summary */}
+                <p className="text-xs sm:text-sm text-[#5C6B61] leading-relaxed font-normal border-t border-[#EAE4D9] pt-4">
+                  {doc.summary}
                 </p>
-              </div>
 
-              <p className="text-xs sm:text-sm text-[#64748B] dark:text-slate-400 leading-relaxed font-normal">
-                {doctorData.bio}
-              </p>
-
-              {/* Specialties List */}
-              <div className="space-y-2 pt-2">
-                <h4 className="text-xs font-bold text-[#0F172A] dark:text-white uppercase tracking-wider">
-                  Clinical Specialties & Focus Areas
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {doctorData.specialties.map((spec, i) => (
-                    <div key={i} className="flex items-center space-x-2.5 p-2.5 bg-[#F8FAFC] dark:bg-slate-800/60 rounded-xl border border-slate-200/60 dark:border-slate-700/60 text-xs font-medium text-[#0F172A] dark:text-slate-200">
-                      <CheckCircle2 size={16} className="text-blue-600 shrink-0" />
-                      <span>{spec}</span>
-                    </div>
-                  ))}
+                {/* Specializations List */}
+                <div className="space-y-2 pt-2">
+                  <h4 className="text-xs font-bold text-[#14291D] uppercase tracking-wider">
+                    Clinical Specializations:
+                  </h4>
+                  <div className="grid grid-cols-1 gap-2">
+                    {doc.specializations.map((spec, i) => (
+                      <div key={i} className="flex items-center space-x-2.5 p-2.5 bg-[#FDFBF7] rounded-xl border border-[#EAE4D9] text-xs font-medium text-[#14291D]">
+                        <CheckCircle2 size={16} className="text-[#C59B27] shrink-0" />
+                        <span>{spec}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Achievements List */}
+                <div className="space-y-2 pt-2">
+                  <h4 className="text-xs font-bold text-[#14291D] uppercase tracking-wider">
+                    Key Achievements & Research:
+                  </h4>
+                  <ul className="space-y-1.5 text-xs text-[#5C6B61]">
+                    {doc.achievements.map((ach, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <Award size={14} className="text-[#C59B27] shrink-0 mt-0.5" />
+                        <span>{ach}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Care Philosophy */}
+                <div className="p-4 bg-[#F6F2EA] rounded-2xl border border-[#EAE4D9] space-y-1 text-xs">
+                  <span className="font-bold text-[#1B3B2B]">Holistic Care Philosophy:</span>
+                  <p className="text-[#5C6B61] italic leading-relaxed">"{doc.philosophy}"</p>
+                </div>
+
               </div>
 
               {/* Consultation Timings & Action */}
-              <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4 border-t border-slate-200/80 dark:border-slate-800">
-                <div className="flex items-center space-x-3 text-xs text-[#64748B] dark:text-slate-400 font-medium">
-                  <Clock size={18} className="text-blue-600 shrink-0" />
-                  <span>Mon - Sat: 09:00 AM - 08:00 PM</span>
+              <div className="pt-8 mt-6 border-t border-[#EAE4D9] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-2 text-xs text-[#5C6B61] font-medium">
+                  <Clock size={16} className="text-[#C59B27] shrink-0" />
+                  <span>{doc.consultationHours}</span>
                 </div>
 
                 <Link
                   to="/book"
-                  className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl text-xs transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 active:scale-95"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C59B27] hover:from-[#C59B27] text-white font-bold rounded-2xl text-xs transition-all shadow-md flex items-center justify-center space-x-2 active:scale-95"
                 >
                   <Calendar size={16} />
-                  <span>Book Appointment with Dr. Girija</span>
+                  <span>Book Consultation</span>
                 </Link>
               </div>
 
-            </div>
+            </motion.div>
+          ))}
+        </div>
 
-          </div>
-        </motion.div>
-
-        {/* Qualifications Section */}
-        <div className="border-t border-slate-200/80 dark:border-slate-800 pt-16">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <h2 className="text-2xl font-extrabold text-[#0F172A] dark:text-white font-display">
-              Qualifications & Credentials
+        {/* ACADEMIC & CLINICAL QUALIFICATIONS SECTION */}
+        <div className="border-t border-[#EAE4D9] pt-16 mb-16 text-left">
+          <div className="max-w-2xl mb-12 space-y-2">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14291D] font-display">
+              Academic Qualifications & Credentials
             </h2>
-            <p className="text-xs text-[#64748B] dark:text-slate-400 font-medium">
-              Academic honors, medical certifications, and ongoing professional affiliations.
+            <p className="text-xs text-[#5C6B61] font-medium">
+              Medical degrees, doctoral research fellowships, and government affiliations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {doctorData.qualifications.map((q, idx) => (
-              <div key={idx} className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-card text-left space-y-2">
-                <div className="w-10 h-10 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 flex items-center justify-center border border-blue-100 dark:border-blue-800">
-                  <Award size={20} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {doctorsData.map((doc) => (
+              <div key={doc.id} className="bg-white p-8 rounded-3xl border border-[#EAE4D9] shadow-card space-y-4">
+                <h3 className="text-xl font-bold text-[#14291D] font-display border-b border-[#EAE4D9] pb-3">
+                  {doc.name} Qualifications
+                </h3>
+                <div className="space-y-4">
+                  {doc.education.map((edu, idx) => (
+                    <div key={idx} className="flex items-start space-x-3 text-xs">
+                      <div className="w-8 h-8 rounded-xl bg-[#FDF7E7] text-[#C59B27] flex items-center justify-center shrink-0 mt-0.5">
+                        <GraduationCap size={16} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[#14291D]">{edu.degree}</h4>
+                        <p className="text-[#5C6B61]">{edu.institution} • {edu.year}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <h4 className="text-base font-bold text-[#0F172A] dark:text-white font-display">{q.title}</h4>
-                <p className="text-xs text-[#64748B] dark:text-slate-400 font-normal leading-relaxed">{q.institution}</p>
               </div>
             ))}
           </div>
         </div>
+
+        {/* CTA Banner */}
+        <CTABanner
+          title="Consult Directly with Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh"
+          subtitle="Experience precision Nadi Pariksha, Agnikarma, Viddhakarma, and Panchakarma therapies."
+          variant="gold"
+        />
 
       </div>
     </div>

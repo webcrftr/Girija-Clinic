@@ -54,9 +54,9 @@ export default function PrintPrescription({ prescription, onClose }) {
               <p className="text-xs text-slate-500 mt-1">123 Healthcare Ave, Medical District • +1 (555) 019-2834</p>
             </div>
             <div className="text-right">
-              <h2 className="text-lg font-bold text-slate-900">Dr. Girija Prasad</h2>
-              <p className="text-xs text-slate-500">M.D. in Internal Medicine & Gastrology</p>
-              <p className="text-xs text-slate-500 mt-1">Reg No: GCN-MED-092834</p>
+              <h2 className="text-lg font-bold text-slate-900">Dr. Ombeer R. Pal</h2>
+              <p className="text-xs text-slate-500">BAMS, MD (Ayurveda) • Panchakarma Specialist</p>
+              <p className="text-xs text-slate-500 mt-1">Reg No: GCN-AYU-092834</p>
             </div>
           </div>
 

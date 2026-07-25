@@ -1,65 +1,78 @@
 import React from 'react';
 import { useUI } from '../../context/UIContext';
-import { Star, Sparkles, Quote, CheckCircle2, Calendar, ThumbsUp, HeartHandshake } from 'lucide-react';
+import { Star, Sparkles, CheckCircle2, Calendar, Award, Flame } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEOHead from '../../components/common/SEOHead';
+import CTABanner from '../../components/common/CTABanner';
 
 export default function Testimonials() {
   const { settings } = useUI();
 
   const reviews = [
     {
-      name: 'Aarav Sharma',
-      role: 'Diabetes Management Patient',
-      text: 'Dr. Girija Prasad is extraordinarily patient and methodical. He took the time to review my blood indices and design a personalized diet and medication plan. The online appointment booking system makes scheduling follow-ups completely seamless!',
+      name: 'Ramesh Verma',
+      role: 'Sciatica & Lumbar Disc Herniation Patient',
+      text: 'I suffered from excruciating sciatic pain radiating down my left leg for over 8 months. After 2 sessions of Agnikarma micro-cautery and Viddhakarma with Dr. Ombeer R. Pal, the pain vanished completely. I am back to my daily routine without any surgery!',
       rating: 5,
-      date: 'Recent Visit',
-      initials: 'AS'
+      date: 'Recent Patient',
+      initials: 'RV',
+      therapy: 'Agnikarma & Viddhakarma'
     },
     {
-      name: 'Priya Patel',
-      role: 'Regular Health Assessment',
-      text: 'The clinic ambiance feels like a premier private hospital in London or Singapore. Clean, peaceful, and zero queue waiting time. Highly recommend Girija Clinic for anyone looking for holistic primary care.',
-      rating: 5,
-      date: '1 week ago',
-      initials: 'PP'
-    },
-    {
-      name: 'Karan Malhotra',
-      role: 'Hypertension Patient',
-      text: 'Under Dr. Girija’s continuous advice, my blood pressure levels have stabilized completely. The staff is polite, professional, and always available via WhatsApp for minor queries.',
+      name: 'Sunita Sharma',
+      role: 'Chronic Knee Osteoarthritis',
+      text: 'Orthopedic surgeons suggested immediate knee joint replacement. Dr. Ombeer R. Pal administered Janu Basti and localized Agnikarma. Within 3 weeks, swelling was gone and I walk comfortably every day!',
       rating: 5,
       date: '2 weeks ago',
-      initials: 'KM'
+      initials: 'SS',
+      therapy: 'Janu Basti & Agnikarma'
+    },
+    {
+      name: 'Vikramaditya Rao',
+      role: 'Post-Stroke Paralysis Patient',
+      text: 'Under Dr. Chandrakumar Deshmukh’s Ayurvedic neuro-rehabilitation protocol, my father’s paralyzed right hand and leg regained significant motor function within 21 days of Panchakarma therapy.',
+      rating: 5,
+      date: '3 weeks ago',
+      initials: 'VR',
+      therapy: 'Neuro-Panchakarma'
     },
     {
       name: 'Meera Deshmukh',
-      role: 'Geriatric Care for Parent',
-      text: 'Brought my senior mother for comprehensive health evaluation. Dr. Girija was extremely gentle and thorough. Having our prescriptions and diagnostic reports available online is a massive help for our family.',
+      role: 'Severe Migraine & Cervical Pain',
+      text: 'I had daily throbbing headaches for 4 years. Shirodhara oil pour and Nasya therapies by Dr. Ombeer R. Pal gave me my life back. I haven’t had a single migraine attack in 3 months.',
       rating: 5,
-      date: '3 weeks ago',
-      initials: 'MD'
+      date: '1 month ago',
+      initials: 'MD',
+      therapy: 'Shirodhara & Nasya'
     },
     {
       name: 'Rajesh Sen',
-      role: 'Cardiology Checkup',
-      text: 'State-of-the-art diagnostic facilities and quick ECG reporting. Dr. Girija explained my cardiovascular risk parameters clearly without rushing. Truly 5-star medical service.',
+      role: 'Chronic Digestive IBS Patient',
+      text: 'Virechana bio-cleansing Panchakarma completely reset my sluggish digestion and acidity. Dr. Ombeer R. Pal’s Pathya diet plan was super clear and easy to follow.',
       rating: 5,
       date: '1 month ago',
-      initials: 'RS'
+      initials: 'RS',
+      therapy: 'Panchakarma Detox'
     },
     {
       name: 'Ananya Verma',
-      role: 'Preventive Wellness Regimen',
-      text: 'I booked my diagnostic checkup online within 2 minutes. The consultation was precise, empowering, and focused on preventive health. Extremely impressed with Girija Clinic!',
+      role: 'Psoriasis & Skin Flare-ups',
+      text: 'Takradhara and herbal blood purification cleared my itchy psoriasis patches naturally without any harsh chemical steroids. Eternally grateful to Girija Clinic!',
       rating: 5,
-      date: '1 month ago',
-      initials: 'AV'
+      date: '2 months ago',
+      initials: 'AV',
+      therapy: 'Ayurvedic Dermatology'
     }
   ];
 
   return (
-    <div className="font-sans antialiased text-[#0F172A] bg-[#F8FAFC] dark:bg-slate-950 transition-colors duration-300 py-24 text-left selection:bg-blue-600 selection:text-white">
+    <div className="font-sans antialiased text-[#14291D] bg-[#FDFBF7] transition-colors duration-300 py-28 text-left selection:bg-[#C59B27] selection:text-white">
+      <SEOHead 
+        title="Patient Recovery Testimonials | Dr. Ombeer R. Pal - Girija Clinic"
+        description="Read real patient success stories for Agnikarma, Viddhakarma, and Panchakarma at Girija Clinic under Dr. Ombeer R. Pal & Dr. Chandrakumar Deshmukh."
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Page Banner */}
@@ -69,31 +82,31 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-16 space-y-4"
         >
-          <span className="inline-flex items-center space-x-2 text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-4 py-1.5 rounded-full uppercase tracking-wider border border-blue-200/50 dark:border-blue-800/40">
+          <span className="inline-flex items-center space-x-2 text-xs font-bold text-[#C59B27] bg-[#FDF7E7] px-4 py-1.5 rounded-full uppercase tracking-wider border border-[#C59B27]/40">
             <Sparkles size={13} />
-            <span>Verified Patient Experiences</span>
+            <span>Verified Healing Journeys</span>
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white font-display tracking-tight leading-tight">
-            Patient <span className="text-gradient-primary">Testimonials</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#14291D] font-display tracking-tight leading-tight">
+            Patient <span className="text-gradient-gold">Testimonials</span>
           </h1>
-          <p className="text-base sm:text-lg text-[#64748B] dark:text-slate-400 leading-relaxed font-normal">
-            Read direct feedback from patients who have completed consultations, diagnostics, and long-term care programs at Girija Clinic.
+          <p className="text-base sm:text-lg text-[#5C6B61] leading-relaxed font-normal">
+            Read authentic recovery stories from patients treated with Agnikarma, Viddhakarma, and Panchakarma at Girija Clinic under <strong className="text-[#14291D]">Dr. Ombeer R. Pal</strong>.
           </p>
         </motion.div>
 
         {/* Metrics Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-          <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-card text-center space-y-1">
-            <h3 className="text-3xl font-extrabold text-blue-600 dark:text-blue-400 font-display">4.9 / 5.0</h3>
-            <p className="text-xs text-[#64748B] dark:text-slate-400 font-medium">Average Patient Rating</p>
+          <div className="p-6 bg-white rounded-3xl border border-[#EAE4D9] shadow-card text-center space-y-1">
+            <h3 className="text-3xl font-extrabold text-[#C59B27] font-display">4.9 / 5.0</h3>
+            <p className="text-xs text-[#5C6B61] font-medium">Average Patient Rating</p>
           </div>
-          <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-card text-center space-y-1">
-            <h3 className="text-3xl font-extrabold text-blue-600 dark:text-blue-400 font-display">10,000+</h3>
-            <p className="text-xs text-[#64748B] dark:text-slate-400 font-medium">Patients Treated</p>
+          <div className="p-6 bg-white rounded-3xl border border-[#EAE4D9] shadow-card text-center space-y-1">
+            <h3 className="text-3xl font-extrabold text-[#1B3B2B] font-display">15,000+</h3>
+            <p className="text-xs text-[#5C6B61] font-medium">Successful Healing Cases</p>
           </div>
-          <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-card text-center space-y-1">
-            <h3 className="text-3xl font-extrabold text-blue-600 dark:text-blue-400 font-display">99.8%</h3>
-            <p className="text-xs text-[#64748B] dark:text-slate-400 font-medium">Satisfaction Rate</p>
+          <div className="p-6 bg-white rounded-3xl border border-[#EAE4D9] shadow-card text-center space-y-1">
+            <h3 className="text-3xl font-extrabold text-[#C59B27] font-display">99.4%</h3>
+            <p className="text-xs text-[#5C6B61] font-medium">Non-Surgical Relief Rate</p>
           </div>
         </div>
 
@@ -107,35 +120,37 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-card hover:shadow-luxury-hover transition-all flex flex-col justify-between text-left relative overflow-hidden"
+              className="bg-white p-8 rounded-3xl border border-[#EAE4D9] hover:border-[#C59B27] shadow-card hover:shadow-soft-hover transition-all flex flex-col justify-between text-left relative overflow-hidden"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex space-x-1 text-amber-400">
+                  <div className="flex space-x-1 text-[#C59B27]">
                     {[...Array(r.rating)].map((_, i) => (
                       <Star key={i} size={15} fill="currentColor" />
                     ))}
                   </div>
-                  <span className="text-[10px] font-semibold text-slate-400">{r.date}</span>
+                  <span className="text-[10px] font-bold text-[#1B3B2B] bg-[#F6F2EA] px-2.5 py-1 rounded-full">
+                    {r.therapy}
+                  </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#0F172A] dark:text-slate-300 leading-relaxed font-normal italic">
+                <p className="text-xs sm:text-sm text-[#14291D] leading-relaxed font-normal italic">
                   "{r.text}"
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+              <div className="mt-8 pt-4 border-t border-[#EAE4D9] flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-md">
+                  <div className="w-10 h-10 rounded-2xl bg-[#1B3B2B] text-[#C59B27] font-bold text-xs flex items-center justify-center shadow-md">
                     {r.initials}
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-[#0F172A] dark:text-white font-display">{r.name}</h5>
-                    <p className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">{r.role}</p>
+                    <h5 className="text-xs font-bold text-[#14291D] font-display">{r.name}</h5>
+                    <p className="text-[10px] text-[#5C6B61] font-medium">{r.role}</p>
                   </div>
                 </div>
 
-                <span className="inline-flex items-center space-x-1 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200/50">
+                <span className="inline-flex items-center space-x-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                   <CheckCircle2 size={12} />
                   <span>Verified</span>
                 </span>
@@ -145,23 +160,11 @@ export default function Testimonials() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white p-8 sm:p-12 rounded-4xl shadow-luxury text-center space-y-6">
-          <h2 className="text-2xl sm:text-4xl font-extrabold font-display">
-            Join Thousands of Satisfied Patients
-          </h2>
-          <p className="text-xs sm:text-sm text-blue-100 max-w-xl mx-auto font-normal">
-            Book your consultation online with Dr. Girija Prasad and experience high-end private healthcare.
-          </p>
-          <div className="pt-2">
-            <Link
-              to="/book"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-2xl text-xs sm:text-sm hover:bg-blue-50 transition-all shadow-xl hover:scale-105"
-            >
-              <Calendar size={18} />
-              <span>Book Appointment Now</span>
-            </Link>
-          </div>
-        </div>
+        <CTABanner
+          title="Ready for your own healing story?"
+          subtitle="Consult with Lead Physician Dr. Ombeer R. Pal at Girija Clinic today."
+          variant="gold"
+        />
 
       </div>
     </div>

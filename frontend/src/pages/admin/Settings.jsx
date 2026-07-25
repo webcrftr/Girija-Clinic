@@ -77,7 +77,7 @@ export default function Settings() {
                 {formData.clinicName || 'Girija Clinic'}
               </h2>
               <p className="text-xs text-slate-400 font-semibold mt-1">
-                {formData.doctorName || 'Dr. Girija Prasad'}
+                {formData.doctorName || 'Dr. Ombeer R. Pal'}
               </p>
             </div>
 
@@ -132,7 +132,7 @@ export default function Settings() {
                   value={formData.doctorName}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
-                  placeholder="e.g. Dr. Girija Prasad"
+                  placeholder="e.g. Dr. Ombeer R. Pal"
                 />
               </div>
             </div>

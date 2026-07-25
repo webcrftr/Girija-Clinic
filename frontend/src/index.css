@@ -9,77 +9,101 @@
   
   body {
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
-    color: #0F172A;
-    background-color: #FFFFFF;
+    color: #14291D;
+    background-color: #FDFBF7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Outfit', serif, sans-serif;
     letter-spacing: -0.02em;
-    color: #0F172A;
+    color: #14291D;
   }
 }
 
-/* Premium Bright White Medical Utilities */
-.white-nav {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid #E2E8F0;
+/* Premium Ayurvedic Glass & Header Utilities */
+.ayurveda-nav {
+  background: rgba(253, 251, 247, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 221, 212, 0.8);
 }
 
-.white-card {
+.ayurveda-card {
   background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px 0 rgba(15, 23, 42, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #EAE4D9;
+  box-shadow: 0 4px 24px 0 rgba(27, 59, 43, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.white-card:hover {
-  transform: translateY(-4px);
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 32px 0 rgba(37, 99, 235, 0.08);
+.ayurveda-card:hover {
+  transform: translateY(-5px);
+  border-color: #C59B27;
+  box-shadow: 0 16px 40px 0 rgba(27, 59, 43, 0.1);
+}
+
+.ayurveda-card-gold {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FDF7E7 100%);
+  border: 1.5px solid #C59B27;
+  box-shadow: 0 8px 30px 0 rgba(197, 155, 39, 0.15);
 }
 
 /* Clean Button Styles */
 .btn-primary {
-  background-color: #2563EB;
+  background-color: #1B3B2B;
   color: #FFFFFF;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 9999px;
   transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  background-color: #1D4ED8;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+  background-color: #14291D;
+  box-shadow: 0 8px 24px rgba(27, 59, 43, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #C59B27 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #C59B27 0%, #B2881E 100%);
+  box-shadow: 0 8px 24px rgba(197, 155, 39, 0.35);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: #FFFFFF;
-  color: #0F172A;
-  border: 1px solid #E2E8F0;
+  color: #1B3B2B;
+  border: 1px solid #EAE4D9;
   font-weight: 600;
   border-radius: 9999px;
   transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #F8FAFC;
-  border-color: #CBD5E1;
-  color: #2563EB;
+  background-color: #F6F2EA;
+  border-color: #C59B27;
+  color: #1B3B2B;
 }
 
 /* Subtly Highlighted Text */
-.text-medical-title {
-  color: #0F172A;
-  font-weight: 800;
+.text-gradient-ayurveda {
+  background: linear-gradient(135deg, #1B3B2B 0%, #27523C 50%, #C59B27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.text-medical-accent {
-  color: #2563EB;
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #C59B27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Soft Scrollbar */
@@ -89,16 +113,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F6F2EA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #C59B27;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #1B3B2B;
 }
 
 /* Prescription Print layout overrides */

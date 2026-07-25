@@ -30,7 +30,7 @@ export const UIProvider = ({ children }) => {
   // Global settings state
   const [settings, setSettings] = useState({
     clinicName: 'Girija Clinic',
-    doctorName: 'Dr. Girija Prasad',
+    doctorName: 'Dr. Ombeer R. Pal',
     logo: '',
     address: '123 Healthcare Ave, Medical District, Suite 100',
     phone: '+1 (555) 019-2834',

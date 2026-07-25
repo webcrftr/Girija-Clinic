@@ -192,7 +192,7 @@ export default function Appointments() {
       } else {
         await addDoc(collection(db, "appointments"), {
           ...formFields,
-          doctorName: 'Dr. Girija Prasad',
+          doctorName: 'Dr. Ombeer R. Pal',
           status: 'Pending',
           createdAt: serverTimestamp()
         });
