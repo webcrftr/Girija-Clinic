@@ -51,7 +51,7 @@ export default function PrintPrescription({ prescription, onClose }) {
                 GIRIJA CLINIC
               </h1>
               <p className="text-sm font-semibold text-slate-600">Premium Diagnostics & Family Practice</p>
-              <p className="text-xs text-slate-500 mt-1">123 Healthcare Ave, Medical District • +1 (555) 019-2834</p>
+              <p className="text-xs text-slate-500 mt-1">123 Healthcare Ave, Medical District • +91 99695 05111</p>
             </div>
             <div className="text-right">
               <h2 className="text-lg font-bold text-slate-900">Dr. Ombeer R. Pal</h2>

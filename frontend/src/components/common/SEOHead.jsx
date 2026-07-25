@@ -47,7 +47,7 @@ export default function SEOHead({
         "url": window.location.origin,
         "logo": `${window.location.origin}/logo.png`,
         "description": "Premium Ayurvedic Healthcare Clinic specializing in Agnikarma, Viddhakarma, Panchakarma, and Neurological Rehabilitation.",
-        "telephone": "+1-555-019-2834",
+        "telephone": "+91 99695 05111",
         "email": "contact@girijaclinic.com",
         "medicalSpecialty": ["Ayurvedic", "Neurology", "Musculoskeletal", "PainManagement"],
         "address": {

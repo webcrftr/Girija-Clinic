@@ -711,7 +711,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-6 pt-2 text-xs font-semibold text-[#14291D]">
                 <div className="flex items-center space-x-2">
                   <PhoneCall size={16} className="text-[#C59B27]" />
-                  <span>+1 (555) 019-2834</span>
+                  <span>+91 99695 05111</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock size={16} className="text-[#C59B27]" />

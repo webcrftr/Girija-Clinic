@@ -33,7 +33,7 @@ export const UIProvider = ({ children }) => {
     doctorName: 'Dr. Ombeer R. Pal',
     logo: '',
     address: '123 Healthcare Ave, Medical District, Suite 100',
-    phone: '+1 (555) 019-2834',
+    phone: '+91 99695 05111',
     email: 'contact@girijaclinic.com',
     openingHours: 'Mon - Sat: 9:00 AM - 6:00 PM (Sunday Closed)'
   });

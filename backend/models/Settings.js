@@ -21,7 +21,7 @@ const SettingsSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    default: '+1 (555) 019-2834'
+    default: '+91 99695 05111'
   },
   email: {
     type: String,

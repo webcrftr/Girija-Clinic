@@ -66,7 +66,7 @@ export default function CTABanner({
             </Link>
 
             <a
-              href="https://wa.me/15550192834?text=Hello%20Girija%20Clinic,%20I%20would%20like%20to%20consult%20Dr.%20Ombeer%20R.%20Pal"
+              href="https://wa.me/919969505111?text=Hello%20Girija%20Clinic,%20I%20would%20like%20to%20consult%20Dr.%20Ombeer%20R.%20Pal"
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-2xl text-sm border border-white/20 backdrop-blur-md transition-all flex items-center justify-center space-x-2 active:scale-95"
