@@ -16,10 +16,10 @@ export default function Booking() {
     lastName: '',
     phone: '',
     email: '',
-    gender: 'Male',
+    gender: '',
     age: '',
     dob: '',
-    bloodGroup: 'O+',
+    bloodGroup: '',
     branchName: 'Om Ayurveda (Main Branch - Shanti Garden)',
     doctorName: 'Dr. Ombeer R. Pal',
     appointmentDate: '',
@@ -62,13 +62,13 @@ export default function Booking() {
         const newPatientRef = await addDoc(collection(db, 'patients'), {
           patientId: autoPatientId,
           firstName: formData.firstName,
-          lastName: formData.lastName,
+          lastName: formData.lastName || '',
           phone: formData.phone,
           email: formData.email || '',
-          gender: formData.gender || 'Other',
-          age: parseInt(formData.age) || 30,
-          dob: formData.dob || new Date().toISOString().split('T')[0],
-          bloodGroup: formData.bloodGroup || 'O+',
+          gender: formData.gender || '',
+          age: formData.age ? (parseInt(formData.age) || null) : null,
+          dob: formData.dob || '',
+          bloodGroup: formData.bloodGroup || '',
           createdAt: serverTimestamp()
         });
         patientId = newPatientRef.id;
@@ -189,15 +189,14 @@ export default function Booking() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">LAST NAME *</label>
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">LAST NAME</label>
                   <input
                     type="text"
                     name="lastName"
-                    required
                     value={formData.lastName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
-                    placeholder="Enter last name"
+                    placeholder="Enter last name (optional)"
                   />
                 </div>
               </div>
@@ -223,15 +222,14 @@ export default function Booking() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="john@example.com (optional)"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">DATE OF BIRTH *</label>
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">DATE OF BIRTH</label>
                   <input
                     type="date"
                     name="dob"
-                    required
                     value={formData.dob}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
@@ -241,40 +239,39 @@ export default function Booking() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">GENDER *</label>
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">GENDER</label>
                   <select
                     name="gender"
-                    required
                     value={formData.gender}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   >
+                    <option value="">Select Gender (Optional)</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">AGE *</label>
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">AGE</label>
                   <input
                     type="number"
                     name="age"
-                    required
                     value={formData.age}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
-                    placeholder="e.g. 35"
+                    placeholder="e.g. 35 (optional)"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">BLOOD GROUP *</label>
+                  <label className="text-[11px] font-bold text-[#64748B] block uppercase tracking-wider">BLOOD GROUP</label>
                   <select
                     name="bloodGroup"
-                    required
                     value={formData.bloodGroup}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-colors cursor-pointer"
                   >
+                    <option value="">Select Blood Group (Optional)</option>
                     {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(bg => (
                       <option key={bg} value={bg}>{bg}</option>
                     ))}

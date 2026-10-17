@@ -52,8 +52,9 @@ export default function SEOHead({
         "medicalSpecialty": ["Ayurvedic", "Neurology", "Musculoskeletal", "PainManagement"],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "123 Healthcare Ave, Medical District, Suite 100",
-          "addressLocality": "Healthcare City",
+          "streetAddress": "Shop No. 5, Building No. 10, Sector 4, Shanti Garden, Opposite MBMC Garden, Mira Road (East)",
+          "addressLocality": "Thane",
+          "postalCode": "401107",
           "addressCountry": "IN"
         }
       },

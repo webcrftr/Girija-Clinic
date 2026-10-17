@@ -321,6 +321,40 @@ export default function PatientDetail() {
   return age;
 };
 
+  if (loading) {
+    return (
+      <div className="flex h-96 items-center justify-center">
+        <div className="text-center">
+          <Activity size={40} className="text-primary-500 animate-pulse mx-auto" />
+          <p className="mt-3 text-xs text-slate-400 font-semibold">Loading patient clinical profile...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!patient) {
+    return (
+      <div className="space-y-6 font-sans text-left relative z-10 select-none">
+        <div>
+          <Link to="/admin/patients" className="flex items-center space-x-2 text-xs font-bold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition">
+            <ArrowLeft size={14} />
+            <span>Back to Patients Directory</span>
+          </Link>
+        </div>
+        <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-12 text-center rounded-2xl shadow-sm">
+          <UserCheck size={48} className="text-slate-300 mx-auto" />
+          <h3 className="text-base font-bold text-slate-700 dark:text-white mt-4">Patient Record Not Found</h3>
+          <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">This patient record does not exist or has been removed from clinic databases.</p>
+          <div className="mt-6">
+            <Link to="/admin/patients" className="px-4 py-2 bg-primary-500 text-white font-semibold rounded-lg text-xs">
+              Return to Patient Directory
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 font-sans text-left relative z-10 select-none">
       
@@ -339,7 +373,7 @@ export default function PatientDetail() {
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-6 rounded-2xl shadow-sm text-center relative overflow-hidden">
             <span className="absolute top-4 right-4 bg-primary-50 dark:bg-primary-950/20 text-primary-650 dark:text-primary-400 text-[10px] font-bold px-2 py-0.5 rounded-full font-mono">
-              {patient.patientId}
+              {patient.patientId || '—'}
             </span>
 
             {/* Photo Avatar */}
@@ -347,28 +381,32 @@ export default function PatientDetail() {
               {patient.photo ? (
                 <img src={patient.photo} alt="Avatar profile" className="h-full w-full object-cover" />
               ) : (
-                <span>{patient.firstName[0]}{patient.lastName[0]}</span>
+                <span>{patient.firstName?.[0] || 'P'}{(patient.lastName?.[0]) || ''}</span>
               )}
             </div>
 
             <h2 className="text-xl font-bold font-display text-slate-900 dark:text-white mt-4">
-              {patient.firstName} {patient.lastName}
+              {patient.firstName} {patient.lastName || ''}
             </h2>
-            <p className="text-xs text-slate-400 font-semibold mt-0.5">DOB: {new Date(patient.dob).toLocaleDateString()}</p>
+            <p className="text-xs text-slate-400 font-semibold mt-0.5">
+              DOB: {patient.dob ? new Date(patient.dob).toLocaleDateString() : '—'}
+            </p>
 
             {/* Quick stats grid */}
             <div className="grid grid-cols-3 gap-2 mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 text-[10px]">
               <div>
                 <span className="text-slate-400 block font-semibold">BLOOD GROUP</span>
-                <span className="font-bold text-slate-900 dark:text-white text-xs">{patient.bloodGroup}</span>
+                <span className="font-bold text-slate-900 dark:text-white text-xs">{patient.bloodGroup || '—'}</span>
               </div>
               <div className="border-x border-slate-100 dark:border-slate-800">
                 <span className="text-slate-400 block font-semibold">AGE</span>
-                <span className="font-bold text-slate-900 dark:text-white text-xs">{calculateAge(patient.dob)} Yrs</span>
+                <span className="font-bold text-slate-900 dark:text-white text-xs">
+                  {patient.age ? `${patient.age} Yrs` : (patient.dob ? `${calculateAge(patient.dob)} Yrs` : '—')}
+                </span>
               </div>
               <div>
                 <span className="text-slate-400 block font-semibold">GENDER</span>
-                <span className="font-bold text-slate-900 dark:text-white text-xs">{patient.gender}</span>
+                <span className="font-bold text-slate-900 dark:text-white text-xs">{patient.gender || '—'}</span>
               </div>
             </div>
 
@@ -432,9 +470,9 @@ export default function PatientDetail() {
             <div>
               <span className="text-slate-400 block font-semibold">PAST CONDITIONS</span>
               <span className="text-slate-805 dark:text-white text-xs truncate max-w-[120px] block font-semibold">
-                {Array.isArray(patient.allergies)
-                ? patient.allergies.join(", ")
-                : patient.allergies || "None"}
+                {Array.isArray(patient.medicalHistory)
+                ? patient.medicalHistory.join(", ")
+                : patient.medicalHistory || "None"}
               </span>
             </div>
           </div>
@@ -503,7 +541,7 @@ export default function PatientDetail() {
                         </div>
                         <div className="mt-4 pt-3 border-t border-slate-50 dark:border-slate-800 flex justify-end">
                           <button
-                            onClick={() => setPrintablePrescription(pr)}
+                            onClick={() => setPrintablePrescription({ ...pr, patient })}
                             className="flex items-center space-x-1 text-primary-500 hover:text-primary-650 font-bold"
                           >
                             <Eye size={12} />

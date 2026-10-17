@@ -10,6 +10,7 @@ export default function Settings() {
   const [formData, setFormData] = useState({
     clinicName: '',
     doctorName: '',
+    doctorRegNo: 'I-68086-A',
     phone: '',
     email: '',
     address: '',
@@ -21,6 +22,7 @@ export default function Settings() {
       setFormData({
         clinicName: settings.clinicName || '',
         doctorName: settings.doctorName || '',
+        doctorRegNo: settings.doctorRegNo || 'I-68086-A',
         phone: settings.phone || '',
         email: settings.email || '',
         address: settings.address || '',
@@ -135,6 +137,19 @@ export default function Settings() {
                   placeholder="e.g. Dr. Ombeer R. Pal"
                 />
               </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pt-0.5">DOCTOR REGISTRATION NUMBER *</label>
+                <input
+                  type="text"
+                  name="doctorRegNo"
+                  required
+                  value={formData.doctorRegNo}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  placeholder="e.g. I-68086-A"
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-left">
@@ -147,7 +162,7 @@ export default function Settings() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
-                  placeholder="e.g. +91 9969505111"
+                  placeholder="e.g. +91 99695 05111"
                 />
               </div>
 
@@ -174,7 +189,7 @@ export default function Settings() {
                 value={formData.address}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-slate-155 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
-                placeholder="e.g. 123 Health Ave, District Suite"
+                placeholder="Shop No. 5, Building No. 10, Sector 4, Shanti Garden, Opposite MBMC Garden, Mira Road (East), Thane – 401107"
               ></textarea>
             </div>
 

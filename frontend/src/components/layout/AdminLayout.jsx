@@ -46,7 +46,7 @@ export default function AdminLayout() {
         const allPatients = patientsSnap.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }));
         const term = searchVal.toLowerCase();
         const results = allPatients.filter(pat => 
-          (pat.firstName + ' ' + pat.lastName).toLowerCase().includes(term) ||
+          ((pat.firstName || '') + ' ' + (pat.lastName || '')).toLowerCase().includes(term) ||
           (pat.patientId || '').toLowerCase().includes(term) ||
           (pat.phone || '').toLowerCase().includes(term)
         );
@@ -123,10 +123,10 @@ export default function AdminLayout() {
                         >
                           <div>
                             <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                              {patient.firstName} {patient.lastName}
+                              {patient.firstName} {patient.lastName || ''}
                             </p>
                             <p className="text-xs text-slate-400">
-                              ID: {patient.patientId} • Phone: {patient.phone}
+                              ID: {patient.patientId || '—'} • Phone: {patient.phone || '—'}
                             </p>
                           </div>
                           <span className="px-2 py-0.5 text-[10px] font-bold bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300 rounded-full">

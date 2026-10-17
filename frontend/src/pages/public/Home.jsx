@@ -706,7 +706,7 @@ export default function Home() {
                 Girija Ayurvedic Healthcare & Panchakarma Centre
               </h3>
               <p className="text-xs sm:text-sm text-[#5C6B61] leading-relaxed">
-                123 Healthcare Ave, Medical District, Suite 100 • Consultation by Prior Appointment
+                Shop No. 5, Building No. 10, Sector 4, Shanti Garden, Opposite MBMC Garden, Mira Road (East), Thane – 401107 • Consultation by Prior Appointment
               </p>
               <div className="flex flex-wrap gap-6 pt-2 text-xs font-semibold text-[#14291D]">
                 <div className="flex items-center space-x-2">

@@ -15,22 +15,25 @@ const PatientSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
+    default: '',
     index: true
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
-    required: true
+    enum: ['Male', 'Female', 'Other', ''],
+    default: ''
   },
   age: {
     type: Number,
-    required: true
+    required: false,
+    default: null
   },
   dob: {
     type: Date,
-    required: true
+    required: false,
+    default: null
   },
   phone: {
     type: String,
@@ -50,8 +53,8 @@ const PatientSchema = new mongoose.Schema({
   },
   bloodGroup: {
     type: String,
-    enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
-    required: true
+    enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', ''],
+    default: ''
   },
   height: {
     type: Number, // in cm

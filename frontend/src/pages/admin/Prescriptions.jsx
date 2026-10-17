@@ -22,7 +22,11 @@ export default function Prescriptions() {
       const patientsSnap = await getDocs(collection(db, "patients"));
       const patientsMap = {};
       patientsSnap.docs.forEach(docSnap => {
-        patientsMap[docSnap.id] = { id: docSnap.id, ...docSnap.data() };
+        const patData = { id: docSnap.id, _id: docSnap.id, ...docSnap.data() };
+        patientsMap[docSnap.id] = patData;
+        if (patData.patientId) {
+          patientsMap[patData.patientId] = patData;
+        }
       });
 
       // Fetch prescriptions
@@ -31,6 +35,7 @@ export default function Prescriptions() {
         const data = docSnap.data();
         return {
           _id: docSnap.id,
+          id: docSnap.id,
           ...data,
           createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt || new Date().toISOString()),
           patient: patientsMap[data.patientId] || null
@@ -73,21 +78,24 @@ export default function Prescriptions() {
   };
 
   // Preview rx details
-  const handlePreviewRx = async (prescId) => {
+  const handlePreviewRx = async (prescId, cachedPatient = null) => {
     try {
       const snap = await getDoc(doc(db, "prescriptions", prescId));
       if (snap.exists()) {
         const data = snap.data();
         // Load patient details for this prescription
-        let patientData = null;
-        if (data.patientId) {
-          const patSnap = await getDoc(doc(db, "patients", data.patientId));
-          if (patSnap.exists()) {
-            patientData = { id: patSnap.id, ...patSnap.data() };
-          }
+        let patientData = cachedPatient;
+        if (!patientData && data.patientId) {
+          try {
+            const patSnap = await getDoc(doc(db, "patients", data.patientId));
+            if (patSnap.exists()) {
+              patientData = { id: patSnap.id, ...patSnap.data() };
+            }
+          } catch (e) {}
         }
         setPrintablePrescription({
           _id: snap.id,
+          id: snap.id,
           ...data,
           createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt || new Date().toISOString()),
           patient: patientData
@@ -179,7 +187,7 @@ export default function Prescriptions() {
                         <div className="flex items-center space-x-2">
                           <User size={14} className="text-slate-400" />
                           <span className="font-semibold text-slate-800 dark:text-white">
-                            {pr.patient.firstName} {pr.patient.lastName}
+                            {pr.patient.firstName} {pr.patient.lastName || ''}
                           </span>
                         </div>
                       ) : (
@@ -196,7 +204,7 @@ export default function Prescriptions() {
                     </td>
                     <td className="py-4 text-right pr-6 space-x-2">
                       <button
-                        onClick={() => handlePreviewRx(pr._id)}
+                        onClick={() => handlePreviewRx(pr._id, pr.patient)}
                         className="inline-flex p-1.5 bg-slate-50 hover:bg-primary-50 hover:text-primary-500 rounded-lg text-slate-500 dark:bg-slate-800 dark:hover:bg-primary-950 dark:text-slate-450 transition"
                         title="Preview Rx"
                       >

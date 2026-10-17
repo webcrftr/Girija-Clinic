@@ -31,8 +31,9 @@ export const UIProvider = ({ children }) => {
   const [settings, setSettings] = useState({
     clinicName: 'Girija Clinic',
     doctorName: 'Dr. Ombeer R. Pal',
+    doctorRegNo: 'I-68086-A',
     logo: '',
-    address: '123 Healthcare Ave, Medical District, Suite 100',
+    address: 'Shop No. 5, Building No. 10, Sector 4, Shanti Garden, Opposite MBMC Garden, Mira Road (East), Thane – 401107',
     phone: '+91 99695 05111',
     email: 'contact@girijaclinic.com',
     openingHours: 'Mon - Sat: 9:00 AM - 6:00 PM (Sunday Closed)'

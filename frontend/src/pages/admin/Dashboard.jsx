@@ -47,7 +47,11 @@ export default function Dashboard() {
 
       const patientsMap = {};
       allPatients.forEach(pat => {
-        patientsMap[pat.id] = pat;
+        const patData = { id: pat.id, _id: pat.id, ...pat };
+        patientsMap[pat.id] = patData;
+        if (pat.patientId) {
+          patientsMap[pat.patientId] = patData;
+        }
       });
 
       // 2. Fetch Appointments
@@ -271,9 +275,9 @@ export default function Dashboard() {
                           <Link to={`/admin/patients/${pat.id}`}>{pat.patientId}</Link>
                         </td>
                         <td className="py-3 font-semibold text-slate-800 dark:text-white">
-                          {pat.firstName} {pat.lastName}
+                          {pat.firstName} {pat.lastName || ''}
                         </td>
-                        <td className="py-3 font-mono">{pat.phone}</td>
+                        <td className="py-3 font-mono">{pat.phone || '—'}</td>
                         <td className="py-3 text-right text-slate-400 font-semibold">{formatDate(pat.createdAt)}</td>
                       </tr>
                     ))}
@@ -314,12 +318,18 @@ export default function Dashboard() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-                    {stats.recent.appointments.map(app => (
-                      <tr key={app._id} className="text-slate-700 dark:text-slate-350 hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
+                    {stats.recent.appointments.map(app => {
+                      const targetPatientId = app.patient?.id || app.patient?._id || app.patientId;
+                      return (
+                      <tr key={app._id || app.id} className="text-slate-700 dark:text-slate-350 hover:bg-slate-50/50 dark:hover:bg-slate-800/10">
                         <td className="py-3 font-semibold text-slate-800 dark:text-white">
-                          <Link to={`/admin/patients/${app.patient?._id}`} className="hover:text-primary-500">
-                            {app.patient?.firstName} {app.patient?.lastName}
-                          </Link>
+                          {targetPatientId ? (
+                            <Link to={`/admin/patients/${targetPatientId}`} className="hover:text-primary-500">
+                              {app.patient?.firstName || 'Patient'} {app.patient?.lastName || ''}
+                            </Link>
+                          ) : (
+                            <span>{app.patient?.firstName || app.patientName || 'Patient'} {app.patient?.lastName || ''}</span>
+                          )}
                         </td>
                         <td className="py-3 font-semibold text-slate-400">{formatDate(app.appointmentDate)}</td>
                         <td className="py-3 font-medium text-slate-600 dark:text-slate-450">{app.timeSlot}</td>
@@ -329,7 +339,8 @@ export default function Dashboard() {
                           </span>
                         </td>
                       </tr>
-                    ))}
+                    );
+                  })}
                   </tbody>
                 </table>
               </div>

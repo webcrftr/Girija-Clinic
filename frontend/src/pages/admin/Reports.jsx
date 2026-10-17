@@ -53,7 +53,7 @@ export default function Reports() {
       if (search.trim()) {
         const val = search.toLowerCase();
         list = list.filter(pat => 
-          (pat.firstName + ' ' + pat.lastName).toLowerCase().includes(val) ||
+          ((pat.firstName || '') + ' ' + (pat.lastName || '')).toLowerCase().includes(val) ||
           (pat.patientId || '').toLowerCase().includes(val) ||
           (pat.phone || '').toLowerCase().includes(val)
         );
@@ -213,17 +213,17 @@ export default function Reports() {
                     key={pat.id}
                     onClick={() => fetchPatientReports(pat)}
                     className={`w-full flex items-center justify-between p-3 rounded-xl transition text-left text-xs ${
-                      selectedPatient?._id === pat.id 
+                      (selectedPatient?.id === pat.id || selectedPatient?._id === pat.id)
                         ? 'bg-primary-50 text-primary-900 dark:bg-primary-950/20 dark:text-primary-350 border border-primary-100/50 dark:border-primary-900/30' 
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-300'
                     }`}
                   >
                     <div className="min-w-0 pr-4">
                       <p className="font-semibold text-slate-900 dark:text-white capitalize">
-                        {pat.firstName} {pat.lastName}
+                        {pat.firstName} {pat.lastName || ''}
                       </p>
                       <p className="text-[10px] text-slate-400 mt-0.5">
-                        ID: {pat.patientId} • Phone: {pat.phone}
+                        ID: {pat.patientId || '—'} • Phone: {pat.phone || '—'}
                       </p>
                     </div>
                     <ArrowRight size={14} className="opacity-40 hover:opacity-100 transition shrink-0" />
@@ -248,10 +248,10 @@ export default function Reports() {
                     {selectedPatient.patientId}
                   </span>
                   <h2 className="text-base font-bold font-display text-slate-900 dark:text-white mt-1 capitalize">
-                    {selectedPatient.firstName} {selectedPatient.lastName}
+                    {selectedPatient.firstName} {selectedPatient.lastName || ''}
                   </h2>
                   <p className="text-[10px] text-slate-400 mt-0.5 font-medium">
-                    Age: {selectedPatient.age} Yrs • Blood: {selectedPatient.bloodGroup} • Phone: {selectedPatient.phone}
+                    {selectedPatient.age ? `Age: ${selectedPatient.age} Yrs • ` : ''}Blood: {selectedPatient.bloodGroup || '—'} • Phone: {selectedPatient.phone || '—'}
                   </p>
                 </div>
                 <button

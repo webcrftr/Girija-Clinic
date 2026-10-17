@@ -58,7 +58,11 @@ export default function Appointments() {
       const patientsSnap = await getDocs(collection(db, "patients"));
       const patientsMap = {};
       patientsSnap.docs.forEach(docSnap => {
-        patientsMap[docSnap.id] = { id: docSnap.id, ...docSnap.data() };
+        const patData = { id: docSnap.id, _id: docSnap.id, ...docSnap.data() };
+        patientsMap[docSnap.id] = patData;
+        if (patData.patientId) {
+          patientsMap[patData.patientId] = patData;
+        }
       });
 
       // Fetch appointments
@@ -126,7 +130,7 @@ export default function Appointments() {
         let list = patientsSnap.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }));
         const term = patientSearch.toLowerCase();
         list = list.filter(pat => 
-          (pat.firstName + ' ' + pat.lastName).toLowerCase().includes(term) ||
+          ((pat.firstName || '') + ' ' + (pat.lastName || '')).toLowerCase().includes(term) ||
           (pat.patientId || '').toLowerCase().includes(term) ||
           (pat.phone || '').toLowerCase().includes(term)
         );
@@ -321,14 +325,22 @@ export default function Appointments() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50 dark:divide-slate-804">
-                {appointments.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10 text-slate-700 dark:text-slate-300">
+                {appointments.map((app) => {
+                  const targetPatientId = app.patient?.id || app.patient?._id || app.patientId;
+                  return (
+                  <tr key={app._id || app.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/10 text-slate-700 dark:text-slate-300">
                     <td className="pl-6 py-4">
                       <div className="text-left">
-                        <Link to={`/admin/patients/${app.patient?._id}`} className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary-500">
-                          {app.patient?.firstName} {app.patient?.lastName}
-                        </Link>
-                        <p className="text-[10px] text-slate-400">ID: {app.patient?.patientId}</p>
+                        {targetPatientId ? (
+                          <Link to={`/admin/patients/${targetPatientId}`} className="text-sm font-semibold text-slate-900 dark:text-white hover:text-primary-500">
+                            {app.patient?.firstName || 'Patient'} {app.patient?.lastName || ''}
+                          </Link>
+                        ) : (
+                          <span className="text-sm font-semibold text-slate-900 dark:text-white">
+                            {app.patient?.firstName || app.patientName || 'Patient'} {app.patient?.lastName || ''}
+                          </span>
+                        )}
+                        <p className="text-[10px] text-slate-400">ID: {app.patient?.patientId || '—'}</p>
                       </div>
                     </td>
                     <td className="py-4 font-semibold">
@@ -389,7 +401,8 @@ export default function Appointments() {
 
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -426,7 +439,7 @@ export default function Appointments() {
                   />
                   {selectedPatient && (
                     <div className="mt-2.5 p-2.5 bg-emerald-50 dark:bg-slate-850 border border-emerald-100 dark:border-slate-800 rounded-lg flex items-center justify-between text-emerald-800 dark:text-emerald-300">
-                      <span>Selected: <strong>{selectedPatient.firstName} {selectedPatient.lastName}</strong></span>
+                      <span>Selected: <strong>{selectedPatient.firstName} {selectedPatient.lastName || ''}</strong></span>
                       <button type="button" onClick={() => setSelectedPatient(null)} className="text-xs font-bold font-sans">✕</button>
                     </div>
                   )}
@@ -441,7 +454,7 @@ export default function Appointments() {
                             onClick={() => selectPatientResult(pat)}
                             className="w-full px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-left text-slate-800 dark:text-white"
                           >
-                            {pat.firstName} {pat.lastName} ({pat.phone})
+                            {pat.firstName} {pat.lastName || ''} ({pat.phone || 'No phone'})
                           </button>
                         </li>
                       ))}
@@ -452,7 +465,7 @@ export default function Appointments() {
                 <div className="p-2.5 bg-slate-50 dark:bg-slate-850 rounded-lg">
                   <span className="text-[10px] text-slate-400 font-bold block mb-1">PATIENT FILE</span>
                   <span className="font-semibold text-slate-805 dark:text-white">
-                    {selectedPatient?.firstName} {selectedPatient?.lastName}
+                    {selectedPatient?.firstName} {selectedPatient?.lastName || ''}
                   </span>
                 </div>
               )}
