@@ -270,7 +270,7 @@ export default function Appointments() {
             placeholder="Search patient names..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-100 text-slate-700 placeholder-slate-400 rounded-lg focus:outline-none focus:border-primary-400 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:placeholder-slate-500 transition"
+            className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 rounded-lg focus:outline-none focus:border-emerald-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:placeholder-slate-400 transition"
           />
         </div>
 
@@ -283,7 +283,7 @@ export default function Appointments() {
               type="date"
               value={dateFilter}
               onChange={(e) => setDateFilter(e.target.value)}
-              className="px-3 py-1 bg-slate-50 border border-slate-105 rounded-lg dark:bg-slate-800 dark:border-slate-800 text-slate-650 dark:text-slate-300 focus:outline-none"
+              className="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none"
             />
           </div>
 
@@ -292,7 +292,7 @@ export default function Appointments() {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-105 rounded-lg dark:bg-slate-800 dark:border-slate-800 text-slate-650 dark:text-slate-300 focus:outline-none"
+              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none"
             >
               <option value="">All</option>
               <option value="Pending">Pending</option>
@@ -418,7 +418,7 @@ export default function Appointments() {
       {/* APPOINTMENT SCHEDULING / RESCHEDULE MODAL */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden select-none">
-          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col text-slate-800 dark:text-slate-100">
             <h3 className="text-base font-bold text-slate-900 dark:text-white font-display mb-4">
               {selectedApp ? 'Reschedule Clinical Visit' : 'Schedule Custom Visit'}
             </h3>
@@ -438,7 +438,7 @@ export default function Appointments() {
                     className="w-full px-3 py-2 border border-slate-150 dark:border-slate-800 bg-transparent rounded-lg focus:outline-none dark:text-white"
                   />
                   {selectedPatient && (
-                    <div className="mt-2.5 p-2.5 bg-emerald-50 dark:bg-slate-850 border border-emerald-100 dark:border-slate-800 rounded-lg flex items-center justify-between text-emerald-800 dark:text-emerald-300">
+                    <div className="mt-2.5 p-2.5 bg-emerald-50 dark:bg-slate-800/80 border border-emerald-100 dark:border-slate-700 rounded-lg flex items-center justify-between text-emerald-800 dark:text-emerald-300">
                       <span>Selected: <strong>{selectedPatient.firstName} {selectedPatient.lastName || ''}</strong></span>
                       <button type="button" onClick={() => setSelectedPatient(null)} className="text-xs font-bold font-sans">✕</button>
                     </div>
@@ -446,7 +446,7 @@ export default function Appointments() {
 
                   {/* search popup */}
                   {patientsList.length > 0 && (
-                    <ul className="absolute left-0 w-full bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 mt-1 rounded-lg z-50 shadow-2xl divide-y dark:divide-slate-800">
+                    <ul className="absolute left-0 w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mt-1 rounded-lg z-50 shadow-2xl divide-y dark:divide-slate-800">
                       {patientsList.map(pat => (
                         <li key={pat.id}>
                           <button
@@ -462,9 +462,9 @@ export default function Appointments() {
                   )}
                 </div>
               ) : (
-                <div className="p-2.5 bg-slate-50 dark:bg-slate-850 rounded-lg">
+                <div className="p-2.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg">
                   <span className="text-[10px] text-slate-400 font-bold block mb-1">PATIENT FILE</span>
-                  <span className="font-semibold text-slate-805 dark:text-white">
+                  <span className="font-semibold text-slate-800 dark:text-white">
                     {selectedPatient?.firstName} {selectedPatient?.lastName || ''}
                   </span>
                 </div>
@@ -492,7 +492,7 @@ export default function Appointments() {
                   required
                   value={formFields.timeSlot}
                   onChange={handleFormChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-800 bg-transparent rounded-lg focus:outline-none dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-lg focus:outline-none focus:border-emerald-500"
                 >
                   {slots.map(s => (
                     <option key={s} value={s}>{s}</option>

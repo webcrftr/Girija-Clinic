@@ -433,7 +433,7 @@ export default function Patients() {
             placeholder="Search name, phone, or ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-100 text-slate-700 placeholder-slate-400 rounded-lg focus:outline-none focus:border-primary-400 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:placeholder-slate-500 transition"
+            className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 rounded-lg focus:outline-none focus:border-emerald-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:placeholder-slate-400 transition"
           />
         </div>
 
@@ -445,7 +445,7 @@ export default function Patients() {
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-105 rounded-lg dark:bg-slate-800 dark:border-slate-800 text-slate-650 dark:text-slate-300 focus:outline-none"
+              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none"
             >
               <option value="">All</option>
               <option value="Male">Male</option>
@@ -459,7 +459,7 @@ export default function Patients() {
             <select
               value={bloodGroup}
               onChange={(e) => setBloodGroup(e.target.value)}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-105 rounded-lg dark:bg-slate-800 dark:border-slate-800 text-slate-650 dark:text-slate-300 focus:outline-none"
+              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none"
             >
               <option value="">All</option>
               {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(bg => (
@@ -473,7 +473,7 @@ export default function Patients() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="px-3 py-1.5 bg-slate-50 border border-slate-105 rounded-lg dark:bg-slate-800 dark:border-slate-800 text-slate-650 dark:text-slate-300 focus:outline-none"
+              className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none"
             >
               <option value="Newest">Newest First</option>
               <option value="Oldest">Oldest First</option>
@@ -604,7 +604,7 @@ export default function Patients() {
       {/* Patient Create / Edit Modal Overlay */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden">
-          <div className="bg-white dark:bg-slate-900 w-full max-w-4xl h-[90vh] overflow-y-auto rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-4xl h-[90vh] overflow-y-auto rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between text-slate-800 dark:text-slate-100">
 
             {/* Modal Header */}
             <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800 mb-6">
@@ -739,14 +739,14 @@ export default function Patients() {
               </div>
 
               {/* Physical Vitals fields */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-5 text-xs text-left bg-slate-50 dark:bg-slate-850 p-4 rounded-xl">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-5 text-xs text-left bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 p-4 rounded-xl">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">BLOOD GROUP</label>
                   <select
                     name="bloodGroup"
                     value={formFields.bloodGroup}
                     onChange={handleFormChange}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-lg focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg focus:outline-none focus:border-emerald-500"
                   >
                     <option value="">Select Blood Group (Optional)</option>
                     {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(bg => (

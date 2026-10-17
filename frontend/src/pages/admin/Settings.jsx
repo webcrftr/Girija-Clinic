@@ -120,7 +120,7 @@ export default function Settings() {
                   required
                   value={formData.clinicName}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="e.g. Girija Clinic"
                 />
               </div>
@@ -133,7 +133,7 @@ export default function Settings() {
                   required
                   value={formData.doctorName}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="e.g. Dr. Ombeer R. Pal"
                 />
               </div>
@@ -146,7 +146,7 @@ export default function Settings() {
                   required
                   value={formData.doctorRegNo}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="e.g. I-68086-A"
                 />
               </div>
@@ -154,54 +154,54 @@ export default function Settings() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-left">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-455 dark:text-slate-400 block pt-0.5">CONTACT TELEPHONE *</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pt-0.5">CONTACT TELEPHONE *</label>
                 <input
                   type="text"
                   name="phone"
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="e.g. +91 99695 05111"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-455 dark:text-slate-400 block pt-0.5">SUPPORT EMAIL *</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pt-0.5">SUPPORT EMAIL *</label>
                 <input
                   type="email"
                   name="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="e.g. support@girijaclinic.com"
                 />
               </div>
             </div>
 
             <div className="space-y-1 text-xs text-left">
-              <label className="text-[10px] font-bold text-slate-455 dark:text-slate-400 block pt-0.5">CLINIC PHYSICAL ADDRESS *</label>
+              <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pt-0.5">CLINIC PHYSICAL ADDRESS *</label>
               <textarea
                 name="address"
                 required
                 rows={3}
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-slate-155 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                 placeholder="Shop No. 5, Building No. 10, Sector 4, Shanti Garden, Opposite MBMC Garden, Mira Road (East), Thane – 401107"
               ></textarea>
             </div>
 
             <div className="space-y-1 text-xs text-left">
-              <label className="text-[10px] font-bold text-slate-455 dark:text-slate-400 block pt-0.5">CLINIC OPENING TIMINGS *</label>
+              <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pt-0.5">CLINIC OPENING TIMINGS *</label>
               <input
                 type="text"
                 name="openingHours"
                 required
                 value={formData.openingHours}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white transition"
+                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                 placeholder="e.g. Mon - Sat: 9:00 AM - 6:00 PM (Sunday Closed)"
               />
             </div>

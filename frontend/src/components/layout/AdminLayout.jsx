@@ -104,13 +104,13 @@ export default function AdminLayout() {
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
                 onFocus={() => searchVal.trim().length > 0 && setShowResults(true)}
-                className="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 border border-slate-100 text-slate-700 placeholder-slate-400 rounded-xl focus:outline-none focus:border-primary-400 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:placeholder-slate-500 transition-all font-sans"
+                className="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 rounded-xl focus:outline-none focus:border-emerald-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:placeholder-slate-400 transition-all font-sans"
               />
             </div>
 
             {/* Live dropdown list results */}
             {showResults && (
-              <div className="absolute left-0 mt-3 w-full bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl shadow-2xl z-50 overflow-hidden animate-fade-in">
+              <div className="absolute left-0 mt-3 w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden animate-fade-in">
                 {isSearching ? (
                   <div className="p-4 text-center text-xs text-slate-400">Searching index records...</div>
                 ) : searchResults.length > 0 ? (

@@ -678,8 +678,8 @@ export default function PatientDetail() {
       {/* WRITE PRESCRIPTION MODAL */}
       {isPrescModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden select-none">
-          <div className="bg-white dark:bg-slate-905 w-full max-w-4xl h-[90vh] overflow-y-auto rounded-3xl p-8 border border-slate-100 dark:border-slate-850 shadow-2xl flex flex-col justify-between">
-            <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800 mb-6Shared">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-4xl h-[90vh] overflow-y-auto rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between text-slate-800 dark:text-slate-100">
+            <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800 mb-6">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white font-display">Generate Medicine Chart</h3>
               <button
                 onClick={() => setIsPrescModalOpen(false)}
@@ -693,23 +693,23 @@ export default function PatientDetail() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-left">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block pb-0.5">DIAGNOSIS SUMMARY *</label>
+                  <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pb-0.5">DIAGNOSIS SUMMARY *</label>
                   <input
                     type="text"
                     required
                     value={newPresc.diagnosis}
                     onChange={(e) => setNewPresc(prev => ({ ...prev, diagnosis: e.target.value }))}
-                    className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                     placeholder="e.g. Hypertension, Gastrology pain issues"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-400 block pb-0.5">NEXT FOLLOW-UP DATE (OPTIONAL)</label>
+                  <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block pb-0.5">NEXT FOLLOW-UP DATE (OPTIONAL)</label>
                   <input
                     type="date"
                     value={newPresc.nextFollowUp}
                     onChange={(e) => setNewPresc(prev => ({ ...prev, nextFollowUp: e.target.value }))}
-                    className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white"
+                    className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   />
                 </div>
               </div>
@@ -717,7 +717,7 @@ export default function PatientDetail() {
               {/* Medicine rows container */}
               <div className="space-y-3.5 text-left">
                 <div className="flex justify-between items-center pb-1.5 border-b border-slate-100 dark:border-slate-800">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Medications Details</span>
+                  <span className="text-[10px] font-bold text-slate-450 dark:text-slate-400 uppercase tracking-wider">Medications Details</span>
                   <button
                     type="button"
                     onClick={addMedicineRow}
@@ -728,52 +728,52 @@ export default function PatientDetail() {
                 </div>
 
                 {newPresc.medicines.map((med, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-3 text-xs bg-slate-50 dark:bg-slate-850 p-4 rounded-xl items-center">
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-3 text-xs bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 p-4 rounded-xl items-center">
                     <div className="md:col-span-4 space-y-1">
-                      <label className="text-[9px] font-bold text-slate-400 block">MEDICINE NAME</label>
+                      <label className="text-[9px] font-bold text-slate-450 dark:text-slate-400 block">MEDICINE NAME</label>
                       <input
                         type="text"
                         required
                         value={med.name}
                         onChange={(e) => handleMedChange(index, 'name', e.target.value)}
-                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-805 rounded-lg focus:outline-none dark:text-white"
+                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                         placeholder="Paracetamol"
                       />
                     </div>
                     <div className="md:col-span-2 space-y-1">
-                      <label className="text-[9px] font-bold text-slate-400 block">DOSAGE</label>
+                      <label className="text-[9px] font-bold text-slate-450 dark:text-slate-400 block">DOSAGE</label>
                       <input
                         type="text"
                         value={med.dosage}
                         onChange={(e) => handleMedChange(index, 'dosage', e.target.value)}
-                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-205 dark:border-slate-805 rounded-lg focus:outline-none dark:text-white"
+                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                         placeholder="1 Pill"
                       />
                     </div>
                     <div className="md:col-span-2 space-y-1">
-                      <label className="text-[9px] font-bold text-slate-450 block mb-1">M - A - N SCHEDULE</label>
+                      <label className="text-[9px] font-bold text-slate-450 dark:text-slate-400 block mb-1">M - A - N SCHEDULE</label>
                       <div className="flex items-center space-x-2 py-0.5">
                         <label className="flex items-center space-x-1 cursor-pointer">
-                          <input type="checkbox" checked={med.morning} onChange={(e) => handleMedChange(index, 'morning', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-transparent border-slate-300" />
-                          <span className="text-[10px] font-bold">M</span>
+                          <input type="checkbox" checked={med.morning} onChange={(e) => handleMedChange(index, 'morning', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600" />
+                          <span className="text-[10px] font-bold text-slate-700 dark:text-slate-200">M</span>
                         </label>
                         <label className="flex items-center space-x-1 cursor-pointer">
-                          <input type="checkbox" checked={med.afternoon} onChange={(e) => handleMedChange(index, 'afternoon', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-transparent border-slate-300" />
-                          <span className="text-[10px] font-bold">A</span>
+                          <input type="checkbox" checked={med.afternoon} onChange={(e) => handleMedChange(index, 'afternoon', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600" />
+                          <span className="text-[10px] font-bold text-slate-700 dark:text-slate-200">A</span>
                         </label>
                         <label className="flex items-center space-x-1 cursor-pointer">
-                          <input type="checkbox" checked={med.night} onChange={(e) => handleMedChange(index, 'night', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-transparent border-slate-300" />
-                          <span className="text-[10px] font-bold">N</span>
+                          <input type="checkbox" checked={med.night} onChange={(e) => handleMedChange(index, 'night', e.target.checked)} className="h-4 w-4 rounded text-primary-500 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600" />
+                          <span className="text-[10px] font-bold text-slate-700 dark:text-slate-200">N</span>
                         </label>
                       </div>
                     </div>
                     <div className="md:col-span-2 space-y-1">
-                      <label className="text-[9px] font-bold text-slate-400 block">DURATION</label>
+                      <label className="text-[9px] font-bold text-slate-450 dark:text-slate-400 block">DURATION</label>
                       <input
                         type="text"
                         value={med.duration}
                         onChange={(e) => handleMedChange(index, 'duration', e.target.value)}
-                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-805 rounded-lg focus:outline-none dark:text-white"
+                        className="w-full px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                         placeholder="5 Days"
                       />
                     </div>
@@ -782,7 +782,7 @@ export default function PatientDetail() {
                         <button
                           type="button"
                           onClick={() => removeMedicineRow(index)}
-                          className="px-2.5 py-1.5 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition"
+                          className="px-2.5 py-1.5 bg-red-50 text-red-600 dark:bg-red-950/30 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-950/50 transition"
                         >
                           ✕
                         </button>
@@ -793,12 +793,12 @@ export default function PatientDetail() {
               </div>
 
               <div className="space-y-1 text-xs text-left">
-                <label className="text-[10px] font-bold text-slate-400 block">DOCTOR ADVICES / INSTRUCTIONS</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">DOCTOR ADVICES / INSTRUCTIONS</label>
                 <textarea
                   rows={2}
                   value={newPresc.advice}
                   onChange={(e) => setNewPresc(prev => ({ ...prev, advice: e.target.value }))}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-850 bg-transparent rounded-lg focus:outline-none focus:border-primary-500 dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500 transition"
                   placeholder="Drink plenty of warm water, take light food diets..."
                 ></textarea>
               </div>
@@ -829,29 +829,29 @@ export default function PatientDetail() {
       {/* REPORT UPLOAD MODAL */}
       {isReportModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden select-none">
-          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col text-slate-800 dark:text-slate-100">
             <h3 className="text-base font-bold text-slate-900 dark:text-white font-display mb-4">Upload Lab Report Scan</h3>
             
             <form onSubmit={handleReportUploadSubmit} className="space-y-4 text-xs text-left">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">REPORT TITLE *</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">REPORT TITLE *</label>
                 <input
                   type="text"
                   required
                   value={reportForm.title}
                   onChange={(e) => setReportForm(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-805 bg-transparent rounded-lg focus:outline-none focus:border-primary-505 dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="e.g. Complete Blood Count (CBC)"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">DESCRIPTION</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">DESCRIPTION</label>
                 <textarea
                   rows={2}
                   value={reportForm.description}
                   onChange={(e) => setReportForm(prev => ({ ...prev, description: e.target.value }))}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-805 bg-transparent rounded-lg focus:outline-none focus:border-primary-505 dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="Provide diagnostic values or remarks..."
                 ></textarea>
               </div>

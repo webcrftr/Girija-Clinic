@@ -198,7 +198,7 @@ export default function Reports() {
                 placeholder="Search patient, ID or phone..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-100 text-slate-700 placeholder-slate-400 rounded-lg focus:outline-none focus:border-primary-400 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:placeholder-slate-500 transition"
+                className="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 rounded-lg focus:outline-none focus:border-emerald-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:placeholder-slate-400 transition"
               />
             </div>
 
@@ -331,32 +331,32 @@ export default function Reports() {
       {/* Upload Scan Modal Overlay */}
       {isUploadModalOpen && selectedPatient && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm overflow-hidden select-none">
-          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col">
-            <h3 className="text-base font-bold text-slate-905 dark:text-white font-display mb-4">Attach Lab Diagnostic File</h3>
-            <p className="text-[10px] text-slate-400 mb-4 bg-slate-50 dark:bg-slate-850 p-2.5 rounded-lg">
-              Uploading file for: <strong>{selectedPatient.firstName} {selectedPatient.lastName}</strong>
+          <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col text-slate-800 dark:text-slate-100">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white font-display mb-4">Attach Lab Diagnostic File</h3>
+            <p className="text-[10px] text-slate-400 mb-4 bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 p-2.5 rounded-lg">
+              Uploading file for: <strong className="text-slate-800 dark:text-white">{selectedPatient.firstName} {selectedPatient.lastName || ''}</strong>
             </p>
             
             <form onSubmit={handleUploadSubmit} className="space-y-4 text-xs text-left">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">REPORT SUMMARY / TITLE *</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">REPORT SUMMARY / TITLE *</label>
                 <input
                   type="text"
                   required
                   value={reportTitle}
                   onChange={(e) => setReportTitle(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-805 bg-transparent rounded-lg focus:outline-none focus:border-primary-505 dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="e.g. Blood Urine Panel Test"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-400 block">ADDITIONAL DESCRIPTION</label>
+                <label className="text-[10px] font-bold text-slate-450 dark:text-slate-400 block">ADDITIONAL DESCRIPTION</label>
                 <textarea
                   rows={2}
                   value={reportDescription}
                   onChange={(e) => setReportDescription(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-150 dark:border-slate-805 bg-transparent rounded-lg focus:outline-none focus:border-primary-505 dark:text-white"
+                  className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-lg focus:outline-none focus:border-emerald-500"
                   placeholder="e.g. Sugar levels, lipid levels high..."
                 ></textarea>
               </div>
